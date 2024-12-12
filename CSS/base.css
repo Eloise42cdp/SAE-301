@@ -57,12 +57,60 @@ body {
 }
 
 
-/* --- Footer --- */
-footer {
-    background-color: #343a40;
-    color: #fff;
+/* --- FOOTER --- */
+/* --- Footer Styles --- */
+.custom-footer {
+    background-color: #a4c7e2; /* Bleu clair du footer */
     padding: 20px 0;
-    text-align: center;
+    border-top: 1px solid #ccc;
+}
+
+/* Logo */
+.footer-logo {
+    max-width: 60px;
+    height: auto;
+    margin-left: 20px;
+}
+
+/* Titre du footer */
+.footer-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: #000;
+}
+
+/* Mentions légales */
+.footer-legal {
+    font-size: 14px;
+    color: #000;
+    margin: 5px 0 0;
+}
+
+/* Bouton de contact */
+.btn-contact {
+    background-color: #f8bfc4; /* Rose pâle */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.btn-contact:hover {
+    background-color: #f4979c;
+}
+
+/* Icône Facebook */
+.social-link {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
 }
 
 
