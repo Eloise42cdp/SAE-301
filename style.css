@@ -1,0 +1,27 @@
+/*CONTACT*/
+.contact {
+    background-color: #99BCDA;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 15%;
+}
+
+.facebook {
+    margin-top: 10%;
+    height: 5em;
+}
+
+.rs {
+    display: flex; /* Active l'alignement en ligne des éléments */
+    align-items: center; /* Aligne verticalement l'image et le texte */
+    gap: 10px; /* Espace entre l'image et le texte */
+}
+
+.rs img.facebook {
+    width: 40px; /* Ajustez la taille de l'image si nécessaire */
+    height: auto; /* Conserve les proportions de l'image */
+}
+
+.rs p {
+    margin-top: 0; /* Retire les marges par défaut autour du texte */
+}
