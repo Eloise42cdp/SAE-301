@@ -78,23 +78,62 @@ h1 h2 h3 h4 {
 }
 
 /* POUR NOS BOUTON */
-
-/* Bouton de connexion et contact et profil*/
-.btn{
-    background-color: #f4979c; 
+.btn {
+    background-color: #f4979c;
     color: rgb(251, 255, 195);
     border: none;
     padding: 10px 20px;
     border-radius: 10vh;
     font-weight: bold;
-    margin-right: 5vh ;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* Ombre ajoutée */
+    margin-right: 4vh;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
+
+/* Icônes par défaut, cachées */
+.btn-icon {
+    display: none;
+    font-size: 20px;
+    color: rgb(251, 255, 195);
+}
+
+/* Style au survol */
 .btn:hover {
     background-color: rgb(251, 255, 195);
     color: rgb(194, 200, 255);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
+
+.btn-img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Media query pour écrans de 780px et moins */
+@media screen and (max-width: 780px) {
+    .btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%; /* Bouton rond */
+        justify-content: center;
+        margin-right: 2vh;
+    }
+
+    .btn-text {
+        display: none; /* Cache le texte du bouton */
+    }
+
+    .btn-icon {
+        display: inline-block; /* Affiche uniquement l'icône */
+    }
+}
+
 
 /* Icône Facebook */
 .social-link {
