@@ -1,35 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand");
+
+
 /* CODE GÉNÉRAL */
 /* --- Base CSS --- */
-body {
-    font-family: 'Oswald', sans-serif;
+p {
     font-family: 'Quicksand', sans-serif;
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+h1 h2 h3 h4 {
+    font-family: 'Oswald' , sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* --- Header --- */
+/* --- HEADER --- */
 /* --- Header Styles --- */
 .custom-header {
-    background-color: #a4c7e2; /* Bleu clair du header */
-    padding: 20px 0;
+    background-color: #a4c7e2; 
+    padding: 2em 0;
     border-bottom: 1px solid #ccc;
     position: relative;
     overflow: hidden;
-    clip-path: ellipse(100% 100% at 50% 0); /* Courbe pour le bas du header */
+    clip-path: ellipse(100% 100% at 50% 0); 
 }
 
 /* Logo */
 .header-logo {
-    max-width: 60px;
+    max-width: 6em;
     height: auto;
-    margin-left: 20px;
+    margin-left: 0.2em;
+}
+
+.footer-logo {
+    max-width: 6em;
+    height: auto;
+    margin-left: 0.2em;
 }
 
 /* Titre principal */
 .header-title {
     font-size: 36px;
-    color: white;
+    color: rgb(251, 255, 195);
     font-weight: bold;
     margin: 0;
 }
@@ -41,79 +54,77 @@ body {
     margin: 0;
 }
 
-/* Bouton de connexion */
-.btn-connexion {
-    background-color: #f8bfc4; /* Rose pâle pour le bouton */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: bold;
-    margin-right: 20px;
-}
-
-.btn-connexion:hover {
-    background-color: #f4979c;
-}
-
-
 /* --- FOOTER --- */
 /* --- Footer Styles --- */
 .custom-footer {
     background-color: #a4c7e2; /* Bleu clair du footer */
-    padding: 20px 0;
+    padding: 0.2em 0;
     border-top: 1px solid #ccc;
-}
-
-/* Logo */
-.footer-logo {
-    max-width: 60px;
-    height: auto;
-    margin-left: 20px;
 }
 
 /* Titre du footer */
 .footer-title {
-    font-size: 24px;
+    font-size: 2em;
     font-weight: bold;
     margin: 0;
-    color: #000;
+    color: rgb(251, 255, 195);
 }
 
 /* Mentions légales */
 .footer-legal {
     font-size: 14px;
-    color: #000;
+    color: rgb(251, 255, 195);
     margin: 5px 0 0;
 }
 
-/* Bouton de contact */
-.btn-contact {
-    background-color: #f8bfc4; /* Rose pâle */
-    color: white;
+/* POUR NOS BOUTON */
+
+/* Bouton de connexion et contact et profil*/
+.btn{
+    background-color: #f4979c; 
+    color: rgb(251, 255, 195);
     border: none;
     padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 10vh;
     font-weight: bold;
-    margin-right: 10px;
+    margin-right: 5vh ;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* Ombre ajoutée */
 }
-
-.btn-contact:hover {
-    background-color: #f4979c;
+.btn:hover {
+    background-color: rgb(251, 255, 195);
+    color: rgb(194, 200, 255);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Icône Facebook */
 .social-link {
-    display: inline-block;
-    margin-top: 10px;
+    /*display: inline-block;*/
+    margin-top: 1em;
 }
 
 .social-icon {
-    width: 40px;
-    height: 40px;
+    width: 2em;
+    height: 2em;
 }
 
 
 /* --- Éléments généraux --- */
 
+/* Media query pour écrans de 768px et moins */
+@media screen and (max-width: 768px) {
+    .btn-contact {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%; /* Bouton rond */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
+    .btn-contact .contact-text {
+        display: none; /* Cache le texte du bouton */
+    }
+
+    .btn-contact .contact-icon {
+        display: block; /* Affiche uniquement l'icône */
+    }
+}
