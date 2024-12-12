@@ -1,0 +1,14 @@
+.card {
+    border-radius: 15px;
+    background-color: #6687A4;
+}
+
+.card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-weight: bold;
+}
