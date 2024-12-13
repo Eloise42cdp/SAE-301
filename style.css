@@ -1,14 +1,26 @@
-.card {
-    border-radius: 15px;
-    background-color: #6687A4;
+/* Qui sommes nous ? */
+/* Style pour l'image dans la section "Qui sommes-nous ?" */
+.img-equal {
+    border-radius: 20px; /* Bords arrondis */
+    max-width: 80%; /* Réduction de la taille de l'image */
+    height: auto; /* Conserve les proportions */
+    display: block; /* Pour centrer correctement l'image */
+    margin: 0 auto; /* Centrage horizontal */
+    object-fit: cover; /* S'assure que l'image garde ses proportions sans être déformée */
 }
 
-.card img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
+/* Justification du texte dans la section "Qui sommes-nous ?" */
+.text-justify {
+    text-align: justify; /* Justifie le texte */
+    line-height: 1.6; /* Espacement entre les lignes pour améliorer la lisibilité */
+    margin-bottom: 1rem; /* Ajoute un espacement entre les paragraphes */
 }
 
-.card-title {
-    font-weight: bold;
+/* Ajustement du titre dans la section "Qui sommes-nous ?" */
+h2.fw-bold {
+    text-align: left; /* Aligne le titre à gauche */
+    margin-bottom: 1rem; /* Espacement sous le titre */
 }
+
+
+/* Les membres du bureau */
