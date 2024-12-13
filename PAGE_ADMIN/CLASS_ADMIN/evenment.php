@@ -16,7 +16,7 @@ class evenement{
         $this -> lieu = $lieu; 
     }
 
-    
+
     
     public function ajoutEvent (){
         $actionsBDD = Database::getConnection():
@@ -25,6 +25,9 @@ class evenement{
         VALUES (:adresse, )';	
         $param = [
             ':adresse'=> $this->lieu,
+            ':dateDebut'=> $this->date_de_debut,
+            ':dateFin'=> $this->date_de_fin,
+            ':nom'=> $this->nom_evenement,
         ];
         $result = $actionsBDD->insertDonnees($sql, $param);
     }
