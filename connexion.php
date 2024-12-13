@@ -1,21 +1,48 @@
+<?php
+if (!isset($_SESSION)) session_start();
+include_once "class/bdd.php";
+include_once "class/user.php";
+
+// Cree un mot de passe
+//$MDP = password_hash("1234", PASSWORD_DEFAULT);
+//echo "<br>MDP : ".$MDP;
+
+
+// Login processing
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $db = new Database();
+    $bdd=$db->getConnection();
+
+    $user = new User($bdd);
+
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    if ($user->login($email, $password)) {
+        header("Location: admin.php");
+        exit;
+    } else {
+        $error = "Le mail ou le mot de passe est invalide.";
+    }
+}
+?>
+
+<!-- Login Page -->
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="CSS/contact.css" rel="stylesheet" type="text/css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="CSS/ACCUEIL/style.css">
+    <link rel="stylesheet" href="H&F/base.css">
 </head>
-
 <body>
-    <header>
+
+<header>
         <div class="custom-header">
             <div class="container-fluid">
                 <div class="row align-items-center">
@@ -41,35 +68,21 @@
         </div>
     </header>
 
-    <section class="container">
-        <div class="contact">
-            <div>
-                <h2>Nous contacter</h2>
-            </div>
-            <div>
-                <h3>Pour Roanne et son aglomération</h3>
-                <p>Françoise VEILLAS : 06 13 55 47 70</p>
-                <p>Jean-François MARQUIS : 06 47 24 69 98</p>
-            </div>
-            <div>
-                <h3>Pour la Soâne et Loire</h3>
-                <p>Agnès THEVENARD : 06 73 07 45 64</p>
-                <p>Marinette BUSCH : 06 84 53 67 92</p>
-                <h3>Pour Charlieu et le Nord Loire</h3>
-                <p>Christian CHEVALIER : 06 28 84 83 37</p>
-            </div>
-            <div>
-                <h3>Secrétariat</h3>
-                <a href="mailto:mcmorel42@orange.fr">mcmorel42@orange.fr</a>
-            </div>
-            <div class="rs">
-                <a href="https://www.facebook.com/profile.php?id=100087407443529"><img src="img/facebook.png"
-                        class="facebook"></a>
-                <p>Les Amis de la Foire Aux Jouets - AFAJ</p>
-            </div>
-        </div>
-    </section>
-    <footer>
+    <h1>Login</h1>
+    <?php if (isset($error)): ?>
+        <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+    <?php endif; ?>
+    <form method="post" action="">
+        <label for="email">email:</label>
+        <input type="text" id="email" name="email" required>
+        <br>
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Login :</button>
+    </form>
+</body>
+<footer>
         <div class="custom-footer">
             <div class="container-fluid">
                 <div class="row align-items-center">
@@ -97,6 +110,5 @@
             </div>
         </div>
     </footer>
-</body>
-
+    
 </html>
