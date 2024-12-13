@@ -22,39 +22,51 @@ h2.fw-bold {
     margin-bottom: 1rem; /* Espacement sous le titre */
 }
 
-
 /* Les membres du bureau */
 /* Style général pour les étiquettes */
 .member-card {
     background-color: #6687A4; /* Couleur de fond */
-    border-radius: 15px; /* Coins arrondis */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
-    min-height: 350px; /* Hauteur minimale */
+    border-radius: 25px; /* Coins arrondis */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre prononcée */
+    width: 100%; /* Largeur de la colonne Bootstrap */
+    min-height: 480px; /* Augmente la hauteur de l'étiquette */
+    max-width: 300px; /* Limite la largeur pour rendre les étiquettes fines */
+    margin: 0 auto; /* Centre la carte dans sa colonne */
     overflow: hidden; /* Évite que le contenu dépasse */
 }
 
 /* Style pour les images */
 .member-image {
     width: 100%; /* L'image occupe toute la largeur */
-    height: auto; /* Respecte les proportions */
+    height: 100%; /* L'image occupe toute la hauteur */
     object-fit: cover; /* Ajuste l'image sans la déformer */
-    border-radius: 15px 15px 0 0; /* Arrondi uniquement en haut */
+    border-radius: 25px; /* Arrondi en haut et en bas */
+    margin-bottom: 40px; /* Un petit espacement entre l'image et le texte */
 }
 
 /* Style pour le corps de la carte */
 .member-card .card-body {
-    text-align: left; /* Alignement à gauche */
+    text-align: left; /* Alignement du texte à gauche */
     color: #000; /* Texte noir */
-    padding: 15px; /* Espacement interne */
+    padding: 20px; /* Espacement interne augmenté */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligne le texte vers le bas */
+    height: 100%; /* Utilise toute la hauteur disponible */
 }
 
 /* Titre des étiquettes */
 .member-card .card-title {
     font-weight: bold; /* Texte en gras */
-    margin-bottom: 5px; /* Espacement sous le titre */
+    margin-bottom: 10px; /* Espacement sous le titre */
 }
 
 /* Texte descriptif */
 .member-card .card-text {
     margin: 0; /* Suppression des marges externes */
+}
+
+/* Centrage global */
+.row {
+    justify-content: center; /* Centre les étiquettes dans chaque ligne */
 }
