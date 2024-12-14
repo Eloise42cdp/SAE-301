@@ -1,7 +1,7 @@
 <?php
 class Evenement{
     private $conn;
-    private $table_name = "evenements";
+    private $table_name = "evenement";
 
     public $id_Evenement;
     public $nom;
@@ -9,12 +9,13 @@ class Evenement{
     public $date_de_fin;
     public $adresse;
 
+    // Constructeur de la classe
     public function __construct($db, $nom, $dateDebut, $dateFin, $adresse) {
-        $this -> conn = $db;
-        $this -> nom = $nom;
-        $this -> dateDebut = $dateDebut;
-        $this -> dateFin = $dateFin;
-        $this -> adresse = $adresse; 
+        $this->conn = $db; // Connexion à la base de données
+        $this->nom = $nom;
+        $this->dateDebut = $dateDebut;
+        $this->dateFin = $dateFin;
+        $this->adresse = $adresse;
     }
 
     
@@ -30,7 +31,12 @@ class Evenement{
             ':dateFin' => $this->dateFin,
             ':adresse' => $this->adresse,
         ];
-        $result = $actionsBDD->insertDonnees($sql, $param);
+
+        // Préparer la requête
+        $stmt = $actionsBDD->prepare($sql);
+    
+        // Exécuter la requête avec les paramètres
+        $result = $stmt->execute($param);
 
         if ($result) {
             echo "Événement ajouté avec succès !";
@@ -52,7 +58,11 @@ class Evenement{
             ':id_Evenement' => $id_Evenement,
         ];
     
-        $result = $actionsBDD->insertDonnees($sql, $param);
+        // Préparer la requête
+        $stmt = $actionsBDD->prepare($sql);
+    
+        // Exécuter la requête avec les paramètres
+        $result = $stmt->execute($param);
     
         if ($result) {
             echo "Événement modifié avec succès !";
@@ -72,8 +82,11 @@ class Evenement{
             ':id_Evenement' => $id,
         ];
     
-        // Exécution de la requête
-        $result = $actionsBDD->insertDonnees($sql, $param);
+        // Préparer la requête
+        $stmt = $actionsBDD->prepare($sql);
+    
+        // Exécuter la requête avec les paramètres
+        $result = $stmt->execute($param);
     
         // Vérification si la suppression a réussi
         if ($result) {
