@@ -19,17 +19,24 @@ class Evenement{
 
     
     public function ajoutEvent (){
-        $actionsBDD = Database::getConnection():
+        $actionsBDD = Database::getConnection();
 
-        $sql='INSERT INTO evenement (adresse, dateDebut, dateFin, nom)
-        VALUES (:adresse, )';	
+        $sql='INSERT INTO evenement (nom_evenement, date_debut, date_fin, lieu)
+        VALUES (:nom_evenement, :date_de_debut, :date_de_fin, :lieu)';	
         $param = [
-            ':lieu'=> $this->lieu,
-            ':date_de_debut'=> $this->date_de_debut,
-            ':date_de_fin'=> $this->date_de_fin,
-            ':nom_evenement'=> $this->nom_evenement,
+            ':nom_evenement' => $this->nom_evenement,
+            ':date_de_debut' => $this->date_de_debut,
+            ':date_de_fin' => $this->date_de_fin,
+            ':lieu' => $this->lieu,
         ];
         $result = $actionsBDD->insertDonnees($sql, $param);
+
+        if ($result) {
+            echo "Événement ajouté avec succès !";
+        } else {
+            echo "Erreur lors de l'ajout de l'événement.";
+        }
+        
     }
 }
 
