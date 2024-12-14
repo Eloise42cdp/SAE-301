@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 13 déc. 2024 à 10:07
+-- Généré le : sam. 14 déc. 2024 à 19:58
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -48,8 +48,8 @@ DROP TABLE IF EXISTS `evenement`;
 CREATE TABLE IF NOT EXISTS `evenement` (
   `Id_Evenement` int NOT NULL AUTO_INCREMENT,
   `adresse` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `dateDebut` int NOT NULL,
-  `dateFin` int NOT NULL,
+  `dateDebut` datetime NOT NULL,
+  `dateFin` datetime NOT NULL,
   `nom` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id_Evenement`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -77,7 +77,17 @@ CREATE TABLE IF NOT EXISTS `jouertype` (
   `Id_JouerType` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id_JouerType`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `jouertype`
+--
+
+INSERT INTO `jouertype` (`Id_JouerType`, `nom`) VALUES
+(1, 'aux tries / réparation des poupées'),
+(2, 'aux tries / réparation des jeux de sociétés'),
+(3, 'aux tries / réparation des livres'),
+(4, 'aux tries / réparation des peluches');
 
 -- --------------------------------------------------------
 
@@ -93,15 +103,17 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `email` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `mdp` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   `dateNaissance` date NOT NULL,
+  `tel` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id_membre`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `membre`
 --
 
-INSERT INTO `membre` (`Id_membre`, `nom`, `prenom`, `email`, `mdp`, `dateNaissance`) VALUES
-(1, 'Escuder', 'Eloise', 'eloise.escuder@gmail.com', '$2y$10$7xIslWNt6q0x8GydJT2CjuQNwTsLx0NQEH/iflSwYPngZbjk6c6LC', '2005-12-01');
+INSERT INTO `membre` (`Id_membre`, `nom`, `prenom`, `email`, `mdp`, `dateNaissance`, `tel`) VALUES
+(1, 'Escuder', 'Eloise', 'eloise.escuder@gmail.com', '$2y$10$7xIslWNt6q0x8GydJT2CjuQNwTsLx0NQEH/iflSwYPngZbjk6c6LC', '2005-12-01', ''),
+(2, 'escuder', 'emilie', 'emilie.escuder@gmail.com', '$2y$10$2NsVj5SEIP5XKltB7M0a4.58qKhnrNSO.sr1uKpW.wnssqKXm5woy', '2005-02-01', '0661144114');
 
 -- --------------------------------------------------------
 
