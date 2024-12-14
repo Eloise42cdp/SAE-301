@@ -171,52 +171,87 @@ h1, h2, h3, h4 {
 /*Page Connexion*/
 
 .connexion {
+    display: flex;
+    align-items: stretch; /* Colonnes alignées sur toute la hauteur */
+    justify-content: space-between; /* Sépare les colonnes */
+    gap: 2%; /* Espace entre les colonnes */
     background-color: #a4c7e2; /* Fond bleu clair */
     margin: 5%; /* Marges autour du bloc */
     padding: 5%; /* Espacement interne */
-    border-radius: 3%; /* Coins légèrement arrondis (15px au lieu de 15%) */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : légère ombre pour relief */
+    border-radius: 2%; /* Coins légèrement arrondis */
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1); /* Légère ombre */
+}
+
+.col {
+    flex: 1; /* Colonnes prennent un espace égal */
+    padding: 2%; /* Espacement interne */
+    position: relative;
+    box-sizing: border-box; /* Inclure le padding dans la largeur */
+}
+
+.col:not(:last-child) {
+    border-right: 0.2em solid #ccc; /* Trait vertical entre les colonnes */
+}
+
+.titre {
+    margin-bottom: 1.5em; /* Espacement sous le titre */
 }
 
 .champsConnexion {
+    margin-top: 1.5em; /* Espacement entre le titre et les champs */
+}
+
+.champsConnexion form {
     display: flex;
+    flex-direction: column; /* Champs empilés verticalement */
+    gap: 1em; /* Espacement entre les champs */
 }
 
 /* Style pour les champs de saisie */
 .champsConnexion input {
-    width: 250%; /* Champs prennent toute la largeur */
-    padding: 10px; /* Espacement interne */
-    margin-top: 5px; /* Espace au-dessus */
-    border: 1px solid #ccc; /* Bordure grise */
-    border-radius: 5px; /* Coins arrondis */
-    font-size: 16px; /* Taille du texte */
+    width: 100%; /* Champs prennent la largeur de la colonne */
+    padding: 0.8em; /* Espacement interne */
+    border: 0.1em solid #ccc; /* Bordure grise */
+    border-radius: 0.3em; /* Coins arrondis */
+    font-size: 1em; /* Taille du texte */
     box-sizing: border-box; /* Inclure le padding dans la largeur */
 }
 
 /* Style pour le placeholder */
 .champsConnexion input::placeholder {
-    color: #aaa; /* Couleur du texte de placeholder */
-    font-style: italic; /* Style italique */
+    color: #aaa; /* Couleur du placeholder */
+    font-style: italic; /* Italique */
 }
 
 .btn1 {
     background-color: #f4979c;
     color: rgb(251, 255, 195);
     border: none;
-    padding: 10px 20px;
-    border-radius: 10vh;
+    padding: 0.8em 1.5em;
+    border-radius: 5em;
     font-weight: bold;
-    margin-right: 4vh;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 16px;
+    box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.2);
+    font-size: 1em;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .btn1:hover {
     background-color: rgb(251, 255, 195);
     color: rgb(194, 200, 255);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0.3em 0.3em 0.6em rgba(0, 0, 0, 0.3);
+}
+
+/* Adaptation pour les écrans plus petits */
+@media (max-width: 768px) {
+    .connexion {
+        flex-direction: column; /* Les colonnes passent en empilage vertical */
+        gap: 3em; /* Espacement entre les colonnes */
+    }
+
+    .col:not(:last-child) {
+        border-right: none; /* Supprimer le trait vertical */
+        border-bottom: 0.2em solid #ccc; /* Ajouter un trait horizontal entre les colonnes */
+        padding-bottom: 2em;
+    }
 }
