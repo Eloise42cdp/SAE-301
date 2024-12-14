@@ -24,14 +24,14 @@ class Database {
 
     public function insertDonnees($requete, $params = []) {
         try {
-           $stmt = $this->dbh->prepare($requete);
-           $stmt->execute($params);
-           return $this->dbh->lastInsertId(); // retourne l'ID de la dernière insertion
+            $stmt = $this->bdd->prepare($requete);
+            $stmt->execute($params);
+            return $this->bdd->lastInsertId(); // retourne l'ID de la dernière insertion
         } catch (PDOException $e) {
-           echo "Échec lors de l'enregistrement des données : " . $e->getMessage();
-           return false;
+            echo "Échec lors de l'enregistrement des données : " . $e->getMessage();
+            return false;
         }
-     }
+    }
 }
 
 
