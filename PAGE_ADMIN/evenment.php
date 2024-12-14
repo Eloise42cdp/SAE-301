@@ -1,4 +1,5 @@
 <?php
+require_once 'database.php';
 class Evenement{
     private $conn;
     private $table_name = "evenement";
@@ -20,7 +21,7 @@ class Evenement{
 
     
     public function ajoutEvent (){
-        $database = new Database();
+        $database = new database();
         $actionsBDD = $database->getConnection();  // Appel de la méthode d'instance
 
         $sql='INSERT INTO evenement (nom, dateDebut, dateFin, adresse)

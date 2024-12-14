@@ -70,7 +70,7 @@
         <label for="evenement">Sélectionner un événement :</label><br>
         <select name="id_evenement" id="evenement" required>
             <?php foreach ($evenements as $evenement): ?>
-                <option value="<?= $evenement['id']; ?>"><?= htmlspecialchars($evenement['nom_evenement']); ?></option>
+                <option value="<?= $evenement['id_Evenement']; ?>"><?= htmlspecialchars($evenement['nom']); ?></option>
             <?php endforeach; ?>
         </select><br><br>
         <label for="nom">Nom événement :</label><br>

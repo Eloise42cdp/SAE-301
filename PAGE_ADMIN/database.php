@@ -1,4 +1,5 @@
 <?php
+
 class Database {
     private $host = "localhost";
     private $db_name = "your_db_name";
@@ -17,4 +18,6 @@ class Database {
         return $this->conn;
     }
 }
+
 ?>
+

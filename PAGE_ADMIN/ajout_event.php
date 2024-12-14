@@ -1,10 +1,11 @@
 <?php
 require_once '../admin_config.php';
 require_once 'evenment.php';
+require_once 'database.php';
 
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $database = new Database();
+    $database = new database();
     $db = $database->getConnection();
 
     // Récupère les valeurs du formulaire

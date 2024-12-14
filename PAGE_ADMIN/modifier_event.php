@@ -1,11 +1,11 @@
 <?php
-require_once 'admin_config.php';
-require_once 'evenement.php';
+require_once '../admin_config.php';
+require_once 'evenment.php';
+
 
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $database = new Database();
-    $db = $database->getConnection();
+    $id_evenement = $_POST['id_evenement'];
 
     // Récupère les valeurs du formulaire
     $nom = $_POST['nom'];
@@ -14,10 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adresse = $_POST['adresse'];
     $id_Evenement = $_POST['id_Evenement']; // Récupérer l'ID de l'événement à modifier
 
-    // Crée une instance de la classe Evenement
-    $event = new Evenement($db, $nom_evenement, $date_de_debut, $date_de_fin, $lieu);
+    // Créer un nouvel objet Evenement avec les données
+    $evenement = new Evenement($db, $nom, $dateDebut, $dateFin, $adresse);
 
-    // Appelle la méthode pour modifier l'événement
-    $event->modifierEvent($id_evenement);
+    // Appeler la méthode de modification de l'événement
+    $evenement->modifierEvent($id_evenement);
 }
 ?>
