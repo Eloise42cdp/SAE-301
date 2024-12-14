@@ -1,3 +1,4 @@
+
 <?php
 
 // User class for authentication
@@ -40,5 +41,4 @@ class User {
         
     //}
 }
-
 
