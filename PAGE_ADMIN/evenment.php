@@ -47,7 +47,8 @@ class Evenement{
         
     }
     public function modifierEvent($id) {
-        $actionsBDD = Database::getConnection();
+        $database = new database();
+        $actionsBDD = $database->getConnection();
     
         $sql = 'UPDATE evenement SET nom = :nom, dateDebut = :dateDebut, dateFin = :dateFin, adresse = :adresse WHERE id_Evenement = :id_Evenement';
     
@@ -56,24 +57,26 @@ class Evenement{
             ':dateDebut' => $this->dateDebut,
             ':dateFin' => $this->dateFin,
             ':adresse' => $this->adresse,
-            ':id_Evenement' => $id_Evenement,
+            ':id_Evenement' => $id,
         ];
     
-        // Préparer la requête
-        $stmt = $actionsBDD->prepare($sql);
+        try {
+            $stmt = $actionsBDD->prepare($sql);
+            $result = $stmt->execute($param);
     
-        // Exécuter la requête avec les paramètres
-        $result = $stmt->execute($param);
-    
-        if ($result) {
-            echo "Événement modifié avec succès !";
-        } else {
-            echo "Erreur lors de la modification de l'événement.";
+            if ($result) {
+                echo "Événement modifié avec succès !";
+            } else {
+                echo "Erreur lors de la modification de l'événement.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur SQL : " . $e->getMessage();
         }
     }
+    
     public function supprimerEvent($id) {
-        // Connexion à la base de données
-        $actionsBDD = Database::getConnection();
+        $database = new database();
+        $actionsBDD = $database->getConnection();
     
         // SQL pour supprimer un événement
         $sql = 'DELETE FROM evenement WHERE id_Evenement = :id_Evenement';

@@ -1,4 +1,5 @@
 <?php
+namespace Admin;
 
 class Database {
     private $host = "localhost";
@@ -18,6 +19,4 @@ class Database {
         return $this->conn;
     }
 }
-
 ?>
-

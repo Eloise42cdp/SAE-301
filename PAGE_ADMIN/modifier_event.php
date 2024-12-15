@@ -1,23 +1,30 @@
 <?php
 require_once '../admin_config.php';
+require_once 'database.php';
 require_once 'evenment.php';
 
+// Initialiser la connexion à la base de données
+$database = new Database();
+$db = $database->getConnection();
 
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_evenement = $_POST['id_evenement'];
+    // Récupère les valeurs du formulaire avec vérification des clés
+    $id_evenement = $_POST['id_evenement'] ?? null;
+    $nom = $_POST['nom'] ?? null;
+    $dateDebut = $_POST['dateDebut'] ?? null;
+    $dateFin = $_POST['dateFin'] ?? null;
+    $adresse = $_POST['adresse'] ?? null;
 
-    // Récupère les valeurs du formulaire
-    $nom = $_POST['nom'];
-    $dateDebut = $_POST['dateDebut'];
-    $dateFin = $_POST['dateFin'];
-    $adresse = $_POST['adresse'];
-    $id_Evenement = $_POST['id_Evenement']; // Récupérer l'ID de l'événement à modifier
+    // Vérifie que l'ID de l'événement est présent
+    if ($id_evenement) {
+        // Créer un nouvel objet Evenement avec les données
+        $evenement = new Evenement($db, $nom, $dateDebut, $dateFin, $adresse);
 
-    // Créer un nouvel objet Evenement avec les données
-    $evenement = new Evenement($db, $nom, $dateDebut, $dateFin, $adresse);
-
-    // Appeler la méthode de modification de l'événement
-    $evenement->modifierEvent($id_evenement);
+        // Appeler la méthode de modification de l'événement
+        $evenement->modifierEvent($id_evenement);
+    } else {
+        echo "Erreur : ID de l'événement manquant.";
+    }
 }
 ?>

@@ -3,11 +3,12 @@ require_once '../admin_config.php';
 require_once 'evenment.php';
 
 
+
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nom = $_POST['nom'];
+    $nom_evenement = $_POST['nom'] ?? null; // Assurez-vous d'utiliser le bon nom de champ
 
-    $database = new Database();
+    $database = new database();
     $db = $database->getConnection();
 
     // Préparez la requête pour supprimer l'événement
@@ -21,4 +22,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Erreur lors de la suppression de l'événement.";
     }
 }
+
 ?>
