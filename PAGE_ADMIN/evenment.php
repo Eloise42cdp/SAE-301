@@ -1,35 +1,43 @@
 <?php
+require_once 'database.php';
 class Evenement{
     private $conn;
-    private $table_name = "evenements";
+    private $table_name = "evenement";
 
-    public $id;
-    public $nom_evenement;
-    public $date_de_debut;
+    public $id_Evenement;
+    public $nom;
+    public $dateDebut;
     public $date_de_fin;
-    public $lieu;
+    public $adresse;
 
-    public function __construct($db, $nom_evenement, $date_de_debut, $date_de_fin, $lieu) {
-        $this->conn = $db;
-        $this -> nom_evenement = $nom_evenement;
-        $this -> date_de_debut = $date_de_debut;
-        $this -> date_de_fin = $date_de_fin;
-        $this -> lieu = $lieu; 
+    // Constructeur de la classe
+    public function __construct($db, $nom, $dateDebut, $dateFin, $adresse) {
+        $this->conn = $db; // Connexion à la base de données
+        $this->nom = $nom;
+        $this->dateDebut = $dateDebut;
+        $this->dateFin = $dateFin;
+        $this->adresse = $adresse;
     }
 
     
     public function ajoutEvent (){
-        $actionsBDD = Database::getConnection();
+        $database = new database();
+        $actionsBDD = $database->getConnection();  // Appel de la méthode d'instance
 
-        $sql='INSERT INTO evenement (nom_evenement, date_debut, date_fin, lieu)
-        VALUES (:nom_evenement, :date_de_debut, :date_de_fin, :lieu)';	
+        $sql='INSERT INTO evenement (nom, dateDebut, dateFin, adresse)
+        VALUES (:nom, :dateDebut, :dateFin, :adresse)';	
         $param = [
-            ':nom_evenement' => $this->nom_evenement,
-            ':date_de_debut' => $this->date_de_debut,
-            ':date_de_fin' => $this->date_de_fin,
-            ':lieu' => $this->lieu,
+            ':nom' => $this->nom,
+            ':dateDebut' => $this->dateDebut,
+            ':dateFin' => $this->dateFin,
+            ':adresse' => $this->adresse,
         ];
-        $result = $actionsBDD->insertDonnees($sql, $param);
+
+        // Préparer la requête
+        $stmt = $actionsBDD->prepare($sql);
+    
+        // Exécuter la requête avec les paramètres
+        $result = $stmt->execute($param);
 
         if ($result) {
             echo "Événement ajouté avec succès !";
@@ -38,6 +46,60 @@ class Evenement{
         }
         
     }
+    public function modifierEvent($id) {
+        $database = new database();
+        $actionsBDD = $database->getConnection();
+    
+        $sql = 'UPDATE evenement SET nom = :nom, dateDebut = :dateDebut, dateFin = :dateFin, adresse = :adresse WHERE id_Evenement = :id_Evenement';
+    
+        $param = [
+            ':nom' => $this->nom,
+            ':dateDebut' => $this->dateDebut,
+            ':dateFin' => $this->dateFin,
+            ':adresse' => $this->adresse,
+            ':id_Evenement' => $id,
+        ];
+    
+        try {
+            $stmt = $actionsBDD->prepare($sql);
+            $result = $stmt->execute($param);
+    
+            if ($result) {
+                echo "Événement modifié avec succès !";
+            } else {
+                echo "Erreur lors de la modification de l'événement.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur SQL : " . $e->getMessage();
+        }
+    }
+    
+    public function supprimerEvent($id) {
+        $database = new database();
+        $actionsBDD = $database->getConnection();
+    
+        // SQL pour supprimer un événement
+        $sql = 'DELETE FROM evenement WHERE id_Evenement = :id_Evenement';
+    
+        // Paramètre pour la requête
+        $param = [
+            ':id_Evenement' => $id,
+        ];
+    
+        // Préparer la requête
+        $stmt = $actionsBDD->prepare($sql);
+    
+        // Exécuter la requête avec les paramètres
+        $result = $stmt->execute($param);
+    
+        // Vérification si la suppression a réussi
+        if ($result) {
+            echo "Événement supprimé avec succès !";
+        } else {
+            echo "Erreur lors de la suppression de l'événement.";
+        }
+    }
+    
 }
 
 ?>
