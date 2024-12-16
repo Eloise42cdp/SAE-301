@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 15 déc. 2024 à 13:44
+-- Généré le : lun. 16 déc. 2024 à 14:03
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `dateNaissance` date NOT NULL,
   `tel` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id_membre`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `membre`
@@ -120,7 +120,11 @@ INSERT INTO `membre` (`Id_membre`, `nom`, `prenom`, `email`, `mdp`, `dateNaissan
 (6, 'Escuder', 'Eloïse', 'eloise.escuder@gmail.com', '$2y$10$RFa8L4JYeu9TlqlPJeVreeger32Jrx62TF.xkxsEdVLIKHEdUZ0ny', '2002-02-13', '0661451067'),
 (7, 'Escuder', 'Eloïse', 'eloise.escuder@gmail.com', '$2y$10$7Nlv8/1EP4SB1M5a3xhdhO1Q8VGJS2BdvOpOesAbc.J2/VyDGAUay', '1996-01-18', '0661451067'),
 (8, 'Escuder', 'Eloïse', 'eloise.escuder@gmail.com', '$2y$10$q1B.J1w5NKfduigYE9WzLufq11BtK1P2kmHFvOCEjPzxpEqh9B2m6', '2002-02-06', '0661451067'),
-(9, 'Escuder', 'Eloïse', 'eloise.escuder@gmail.com', '$2y$10$Van1mpx1Y4ASknRcOJVbFOhtpjQ4z2IEAdgC3PeW3NoaMYUc1AbPa', '1993-02-10', '0661451067');
+(9, 'Escuder', 'Eloïse', 'eloise.escuder@gmail.com', '$2y$10$Van1mpx1Y4ASknRcOJVbFOhtpjQ4z2IEAdgC3PeW3NoaMYUc1AbPa', '1993-02-10', '0661451067'),
+(10, 'Escuder', 'Eloïse', 'eloise.escuder@gmail.com', '$2y$10$4eXfgnpMAkzPDyGvYKhi7.A1sMGHxh07mj/PnUzqfpEIrIPjWlpVm', '2000-02-02', '0661451067'),
+(11, 'escuder', 'emilie', 'emilie.email@gmail.com', '$2y$10$QaJPHuSDr19ZY77BE4NWPOsvJvMxTkz1aPAbx57kyllshYu9jqe2O', '2005-02-01', '0661144114'),
+(12, 'escuder', 'emilie', 'emilie.email@gmail.com', '$2y$10$WBcna3cADWoE7/oCtpoiM.unyAK1oVI7AkZucywEUEluIT8O8hEGu', '2005-02-01', '0661144114'),
+(13, 'moi', 'moi', 'moi.moi@gmail.com', '$2y$10$pOHzJPeRmcKUmk7nrOWOLuPZnu.xir8o/8tdVmY1fXXvbIaOAiuhq', '2004-01-27', '0666666666');
 
 -- --------------------------------------------------------
 
@@ -151,7 +155,15 @@ INSERT INTO `membredroit` (`Id_Membre`, `Id_JouerType`) VALUES
 (29, 2),
 (29, 3),
 (29, 4),
-(29, 1);
+(29, 1),
+(10, 2),
+(10, 3),
+(10, 4),
+(10, 1),
+(13, 2),
+(13, 3),
+(13, 4),
+(13, 1);
 
 -- --------------------------------------------------------
 
@@ -194,6 +206,23 @@ CREATE TABLE IF NOT EXISTS `mt` (
 INSERT INTO `mt` (`Id_membre`, `Id_membreType`) VALUES
 (1, 1),
 (2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `vente`
+--
+
+DROP TABLE IF EXISTS `vente`;
+CREATE TABLE IF NOT EXISTS `vente` (
+  `Id_Vente` int NOT NULL AUTO_INCREMENT,
+  `DateDebut` date NOT NULL,
+  `DateFin` date NOT NULL,
+  `HoraireDebut` int NOT NULL,
+  `HoraireFin` int NOT NULL,
+  `Lieux` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`Id_Vente`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
