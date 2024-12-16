@@ -80,7 +80,7 @@
         <label for="dateFin">Date et heure de fin :</label><br>
         <input type="datetime-local" id="date_de_fin" name="dateFin" required><br><br>
         <label for="adresse">Lieu :</label><br>
-        <input type="text" id="adresse" name="adrese" required><br><br>
+        <input type="text" id="adresse" name="adresse" required><br><br>
         <button type="submit">MODIFIER</button><br><br>
     </form>
 

@@ -5,7 +5,7 @@ require_once 'database.php';
 
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $database = new database();
+    $database = new Database();
     $db = $database->getConnection();
 
     // Récupère les valeurs du formulaire

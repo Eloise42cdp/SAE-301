@@ -3,13 +3,13 @@ require_once '../admin_config.php';
 require_once 'database.php';
 require_once 'evenment.php';
 
-// Initialiser la connexion à la base de données
-$database = new Database();
-$db = $database->getConnection();
 
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupère les valeurs du formulaire avec vérification des clés
+    // Initialiser la connexion à la base de données
+    $database = new Database();
+    $db = $database->getConnection();
+    
     $id_evenement = $_POST['id_evenement'] ?? null;
     $nom = $_POST['nom'] ?? null;
     $dateDebut = $_POST['dateDebut'] ?? null;
