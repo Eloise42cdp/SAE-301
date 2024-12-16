@@ -12,6 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="admin.css">
+    <?php
+    include 'get_event.php';
+    ?>
+
 </head>
 
 <body>
@@ -43,20 +47,58 @@
 
     <h2>Ajouter un événement</h2>
     <form method="POST" action="ajout_event.php">
-        <label for="nom_evenement">Nom événement :</label><br>
-        <input type="text" id="nom_evenement" name="nom_evenement" required><br><br>
+        <label for="nom">Nom événement :</label><br>
+        <input type="text" id="nom" name="nom" required><br><br>
     
-        <label for="date_de_debut">Date et heure de début :</label><br>
-        <input type="datetime-local" id="date_de_debut" name="date_de_debut" required><br><br>
+        <label for="dateDebut">Date et heure de début :</label><br>
+        <input type="datetime-local" id="dateDebut" name="dateDebut" required><br><br>
     
-        <label for="date_de_fin">Date et heure de fin :</label><br>
-        <input type="datetime-local" id="date_de_fin" name="date_de_fin" required><br><br>
+        <label for="dateFin">Date et heure de fin :</label><br>
+        <input type="datetime-local" id="dateFin" name="dateFin" required><br><br>
     
-        <label for="lieu">Lieu :</label><br>
-        <input type="text" id="lieu" name="lieu" required><br><br>
+        <label for="adresse">Lieu :</label><br>
+        <input type="text" id="adresse" name="adresse" required><br><br>
     
-        <button type="submit">Ajouter</button>
+        <button type="submit">AJOUTER</button><br><br>
     </form>
+
+   
+
+    <!-- Formulaire de modification -->
+    <h2>Modifier un événement</h2>
+    <form method="POST" action="modifier_event.php">
+        <label for="evenement">Sélectionner un événement :</label><br>
+        <select name="id_evenement" id="evenement" required>
+            <?php foreach ($evenements as $evenement): ?>
+                <option value="<?= $evenement['id_Evenement']; ?>"><?= htmlspecialchars($evenement['nom']); ?></option>
+            <?php endforeach; ?>
+        </select><br><br>
+        <label for="nom">Nom événement :</label><br>
+        <input type="text" id="nom" name="nom" required><br><br>
+        <label for="dateDebut">Date et heure de début :</label><br>
+        <input type="datetime-local" id="dateDebut" name="dateDebut" required><br><br>
+        <label for="dateFin">Date et heure de fin :</label><br>
+        <input type="datetime-local" id="date_de_fin" name="dateFin" required><br><br>
+        <label for="adresse">Lieu :</label><br>
+        <input type="text" id="adresse" name="adresse" required><br><br>
+        <button type="submit">MODIFIER</button><br><br>
+    </form>
+
+    <!-- Formulaire de suppression -->
+    <h2>Supprimer un événement</h2>
+    <form method="POST" action="supprimer_event.php">
+        <label for="nom">Nom de l'événement :</label><br>
+        <select name="nom" id="nom" required>
+            <?php foreach ($evenements as $evenement): ?>
+                <option value="<?= htmlspecialchars($evenement['nom']); ?>"><?= htmlspecialchars($evenement['nom']); ?></option>
+            <?php endforeach; ?>
+        </select><br><br>
+        <button type="submit">SUPPRIMER</button><br><br>
+    </form>
+
+
+    
+
 
     <footer>
         <div class="custom-footer">

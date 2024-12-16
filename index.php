@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil Maëlle</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
+<?php
+include_once "header.php";
+include_once "carrousel.php";
+?>
 
-<body>
-    <!-- Qui sommes nous ? -->
+<!-- Qui sommes nous ? -->
 <div class="container my-5">
     <div class="row equal-height">
         <!-- Section Image -->
         <div class="col-md-6">
-            <img src="Images/flyer.jpg" alt="Foire aux Jouets" class="img-fluid img-equal">
+            <img src="img/flyer.jpg" alt="Foire aux Jouets" class="img-fluid img-equal">
         </div>
         <!-- Section Texte -->
         <div class="col-md-6 d-flex">
@@ -40,14 +34,14 @@
     </div>
 </div>
 
-    <!-- Membres du Bureau -->
+<!-- Membres du Bureau -->
 <div class="container my-5">
     <h2 class="text-center fw-bold">Les membres du bureau</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
         <!-- Première étiquette -->
         <div class="col">
             <div class="card member-card">
-                <img src="Images/president.png" alt="M. MARQUIS Jean-François" class="member-image">
+                <img src="img/president.png" alt="M. MARQUIS Jean-François" class="member-image">
                 <div class="card-body">
                     <h5 class="card-title">M. MARQUIS Jean-François</h5>
                     <p class="card-text">Président</p>
@@ -57,7 +51,7 @@
         <!-- Deuxième étiquette -->
         <div class="col">
             <div class="card member-card">
-                <img src="Images/tresoriere.png" alt="Mme VIAL Brigitte" class="member-image">
+                <img src="img/tresoriere.png" alt="Mme VIAL Brigitte" class="member-image">
                 <div class="card-body">
                     <h5 class="card-title">Mme VIAL Brigitte</h5>
                     <p class="card-text">Trésorière</p>
@@ -67,7 +61,7 @@
         <!-- Troisième étiquette -->
         <div class="col">
             <div class="card member-card">
-                <img src="Images/secretaire.png" alt="Mme MOREL Marie Claude" class="member-image">
+                <img src="img/secretaire.png" alt="Mme MOREL Marie Claude" class="member-image">
                 <div class="card-body">
                     <h5 class="card-title">Mme MOREL Marie Claude</h5>
                     <p class="card-text">Secrétaire</p>
@@ -77,6 +71,6 @@
     </div>
 </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<?php
+include_once "footer.php";
+?>

@@ -1,4 +1,3 @@
-/*HEDEAR & FOOTER*/
 @import url("https://fonts.googleapis.com/css2?family=Oswald");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand");
 
@@ -10,11 +9,14 @@ p {
     margin: 0;
     padding: 0;
 }
-h1, h2, h3, h4 {
+h1 h2 h3 h4 {
     font-family: 'Oswald' , sans-serif;
     margin: 0;
     padding: 0;
 }
+
+/*HEDEAR & FOOTER*/
+
 
 /* --- HEADER --- */
 /* --- Header Styles --- */
@@ -79,7 +81,7 @@ h1, h2, h3, h4 {
 }
 
 /* POUR NOS BOUTON */
-.btn { 
+.btn {
     background-color: #f4979c;
     color: rgb(251, 255, 195);
     border: none;
@@ -93,7 +95,7 @@ h1, h2, h3, h4 {
     gap: 5px;
     font-size: 16px;
     transition: all 0.3s ease;
-} 
+}
 
 /* Icônes par défaut, cachées */
 .btn-icon {
@@ -135,7 +137,6 @@ h1, h2, h3, h4 {
     }
 }
 
-
 /* Icône Facebook */
 .social-link {
     /*display: inline-block;*/
@@ -168,25 +169,99 @@ h1, h2, h3, h4 {
     }
 }
 
-/*Page Connexion*/
+/*Page Accueil */
 
+/* Qui sommes nous ? */
+/* Style pour l'image dans la section "Qui sommes-nous ?" */
+.img-equal {
+    border-radius: 20px; 
+    max-width: 80%; /* Réduction de la taille de l'image */
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+    object-fit: cover; /* S'assure que l'image garde ses proportions sans être déformée */
+}
+
+/* Justification du texte dans la section "Qui sommes-nous ?" */
+.text-justify {
+    text-align: justify; 
+    line-height: 1.6; 
+    margin-bottom: 1rem; 
+}
+
+/* Ajustement du titre dans la section "Qui sommes-nous ?" */
+h2.fw-bold {
+    text-align: left; 
+    margin-bottom: 1rem; 
+}
+
+/* Les membres du bureau */
+/* Style général pour les étiquettes */
+.member-card {
+    background-color: #6687A4; 
+    border-radius: 25px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    width: 100%; 
+    min-height: 480px; 
+    max-width: 300px; 
+    margin: 0 auto; 
+    overflow: hidden; /* Évite que le contenu dépasse */
+}
+
+/* Style pour les images */
+.member-image {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* Ajuste l'image sans la déformer */
+    border-radius: 25px; 
+    margin-bottom: 40px; 
+}
+
+/* Style pour le corps de la carte */
+.member-card .card-body {
+    text-align: left; 
+    color: #000; 
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    height: 100%; 
+}
+
+/* Titre des étiquettes */
+.member-card .card-title {
+    font-weight: bold; 
+    margin-bottom: 10px; 
+}
+
+/* Texte descriptif */
+.member-card .card-text {
+    margin: 0; 
+}
+
+/* Centrage global */
+.row {
+    justify-content: center; 
+}
+
+/*Page Connexion*/
 .connexion {
     display: flex;
-    align-items: stretch; /* Colonnes alignées sur toute la hauteur */
-    justify-content: space-between; /* Sépare les colonnes */
-    gap: 2%; /* Espace entre les colonnes */
-    background-color: #a4c7e2; /* Fond bleu clair */
-    margin: 5%; /* Marges autour du bloc */
-    padding: 5%; /* Espacement interne */
-    border-radius: 2%; /* Coins légèrement arrondis */
-    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1); /* Légère ombre */
+    align-items: stretch; 
+    justify-content: space-between; 
+    gap: 2%; 
+    background-color: #a4c7e2; 
+    margin: 5%; 
+    padding: 5%; 
+    border-radius: 2%; 
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1); 
 }
 
 .col {
-    flex: 1; /* Colonnes prennent un espace égal */
-    padding: 2%; /* Espacement interne */
+    flex: 1; 
+    padding: 2%; 
     position: relative;
-    box-sizing: border-box; /* Inclure le padding dans la largeur */
+    box-sizing: border-box; 
 }
 
 .col:not(:last-child) {
@@ -194,34 +269,42 @@ h1, h2, h3, h4 {
 }
 
 .titre {
-    margin-bottom: 1.5em; /* Espacement sous le titre */
+    margin-bottom: 1.5em; 
 }
 
 .champsConnexion {
-    margin-top: 1.5em; /* Espacement entre le titre et les champs */
+    margin-top: 1.5em; 
+}
+
+#extra-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1em; 
 }
 
 .champsConnexion form {
     display: flex;
-    flex-direction: column; /* Champs empilés verticalement */
-    gap: 1em; /* Espacement entre les champs */
+    flex-direction: column; 
+    gap: 1em; 
 }
 
 /* Style pour les champs de saisie */
-.champsConnexion input {
-    width: 100%; /* Champs prennent la largeur de la colonne */
-    padding: 0.8em; /* Espacement interne */
-    border: 0.1em solid #ccc; /* Bordure grise */
-    border-radius: 0.3em; /* Coins arrondis */
-    font-size: 1em; /* Taille du texte */
-    box-sizing: border-box; /* Inclure le padding dans la largeur */
+.champsConnexion input, #extra-fields input {
+    width: 100%; 
+    padding: 0.8em; 
+    border: 0.1em solid #ccc; 
+    border-radius: 0.3em; 
+    font-size: 1em; 
+    box-sizing: border-box; 
 }
 
-/* Style pour le placeholder */
+/* Style pour le placeholder 
 .champsConnexion input::placeholder {
-    color: #aaa; /* Couleur du placeholder */
-    font-style: italic; /* Italique */
-}
+    color: #aaa; 
+    font-style: italic; 
+}*/
+
+/*Bouton formulaire connexion*/
 
 .btn1 {
     background-color: #f4979c;
@@ -245,8 +328,8 @@ h1, h2, h3, h4 {
 /* Adaptation pour les écrans plus petits */
 @media (max-width: 768px) {
     .connexion {
-        flex-direction: column; /* Les colonnes passent en empilage vertical */
-        gap: 3em; /* Espacement entre les colonnes */
+        flex-direction: column; 
+        gap: 3em; 
     }
 
     .col:not(:last-child) {
@@ -254,4 +337,33 @@ h1, h2, h3, h4 {
         border-bottom: 0.2em solid #ccc; /* Ajouter un trait horizontal entre les colonnes */
         padding-bottom: 2em;
     }
+}
+
+/*PAGE CONTACT*/
+.contact {
+    background-color: #a4c7e2; 
+    margin: 5%; 
+    padding: 5%; 
+    border-radius: 3%; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.facebook {
+    margin-top: 10%;
+    height: 5em;
+}
+
+.rs {
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+.rs img.facebook {
+    width: 40px; 
+    height: auto; 
+}
+
+.rs p {
+    margin-top: 0; 
 }

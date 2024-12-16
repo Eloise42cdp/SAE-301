@@ -1,4 +1,3 @@
-
 <?php
 
 // Database connection
@@ -20,4 +19,5 @@ class Database {
         return $this->bdd;
     }
 }
+
 
