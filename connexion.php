@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action']=="creation") {
         <input type="hidden" name="action" value="login">
         <button class="btn1" type="submit">Se connecter</button>
     </form>
-    <img src="img/banderole.png" class="img-fluid" alt="Banderole">
+    <img src="img/banderolee.png" class="img-fluid" alt="Banderole">
     </div>
 </div>
 
