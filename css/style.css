@@ -17,6 +17,47 @@ h1 h2 h3 h4 {
 
 /* Accueil */
 
+/* Carrousel */
+/* Réinitialisation globale */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;  /* Prend toute la hauteur */
+}
+
+/* Header */
+header {
+    position: absolute;
+    width: 100%;
+}
+
+.custom-header {
+    position: relative; /* Le header reste normal */
+    z-index: 10; /* Le header passe au-dessus du carrousel */
+    margin: 0;  /* Enleve la marge autour du header */
+    padding: 0; /* Enleve le padding autour du header */
+}
+
+/* Carrousel */
+.carousel-container {
+    margin: 100; /* Enlève la marge autour du carrousel */
+    padding: 100; /* Enlève le padding autour du carrousel */
+    position: relative; /* Le carrousel reste normal */
+    top: 0; /* Colle le carrousel en haut de la page */
+    left: 0;
+    width: 100%; /* S'assure que le carrousel prend toute la largeur */
+}
+
+/* Ajustement de l'image du carrousel */
+.carousel-inner img {
+    display: block;
+    width: 100%;
+    height: 100vh; /* Pleine hauteur de l'écran */
+    object-fit: cover; /* L'image couvre l'espace */
+}
+
+
 /* Qui sommes nous ? */
 /* Style pour l'image dans la section "Qui sommes-nous ?" */
 .img-equal {
