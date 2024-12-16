@@ -19,5 +19,4 @@ class Database {
         return $this->bdd;
     }
 }
-
-
+?>

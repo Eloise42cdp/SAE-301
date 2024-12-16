@@ -84,5 +84,4 @@ class User {
         $this->TypeMembre = "admin";
     }
 }
-
-
+?>

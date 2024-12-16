@@ -13,9 +13,7 @@ if (!$user->isLoggedIn() || $user->role!="membre") {
 
 echo "<br>Espace Membre:".$user->role;
 
-
 ?>
-
 
 <br>
 Nos points de collecte
