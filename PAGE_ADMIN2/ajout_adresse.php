@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $longitude = $_POST['longitude'];
 
     // Crée un objet Evenement sans passer de $id_Evenement
-    $event = new Collecte(null, $nom, $dateDebut, $dateFin, $adresse);
+    $event = new Collecte(null, $ville, $adresse, $la, $adresse);
 
     // Appelle la méthode pour ajouter l'événement
     if ($event->ajoutEvent()) {

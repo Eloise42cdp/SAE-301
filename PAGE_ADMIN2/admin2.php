@@ -15,7 +15,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="admin_2.css">
 
-    <?php include 'get_adresses.php';?>
+    <?php //include 'get_adresses.php';?>
 
 </head>
 
@@ -78,7 +78,7 @@
 
                         <strong>SAINT JULIEN DE JONZY</strong><br>
                         <img class="iconeMap" src="images/epingle.png">
-                        Decheterie - Lieu dit La Thuillere
+                        Décheterie - Lieu dit La Thuillere
                     </p>
                 </div>
             </div>

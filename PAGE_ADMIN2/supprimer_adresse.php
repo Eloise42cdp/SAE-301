@@ -6,15 +6,15 @@ require_once 'database.php';
 
 // Vérifie si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nom_evenement = $_POST['nom'] ?? null; 
+    $adresse = $_POST['adresse'] ?? null; 
 
     $database = new Database();
     $db = $database->getConnection();
 
     // Préparez la requête pour supprimer l'événement
-    $sql = "DELETE FROM evenement WHERE nom = :nom";
+    $sql = "DELETE FROM collecte WHERE ville = :ville";
     $stmt = $db->prepare($sql);
-    $stmt->bindParam(':nom', $nom_evenement);
+    $stmt->bindParam(':ville', $ville);
 
     if ($stmt->execute()) {
         echo "L'événement a été supprimé avec succès.";

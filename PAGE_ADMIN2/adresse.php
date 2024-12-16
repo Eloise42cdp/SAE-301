@@ -1,8 +1,8 @@
 <?php
 require_once 'database.php';
-class Evenement{
+class Collecte{
     private $conn;
-    private $table_name = "evenement";
+    private $table_name = "collecte";
 
     public $id_Evenement;
     public $nom;
@@ -22,7 +22,7 @@ class Evenement{
     
     public function ajoutEvent (){
         $database = new database();
-        $actionsBDD = $database->getConnection();  // Appel de la méthode d'instance
+        $actionsBDD = $database->getConnection(); 
 
         $sql='INSERT INTO evenement (ville, adresse, lagitude, longitude)
         VALUES (:ville, :adresse, :lagitude, :longitude)';	
