@@ -1,36 +1,8 @@
 <?php
-include_once "header.php";
-//if (!isset($_SESSION)) session_start();
 include_once "class/bdd.php";
 include_once "class/user.php";
 
-// Cree un mot de passe
-//$MDP = password_hash("1234", PASSWORD_DEFAULT);
-//echo "<br>MDP : ".$MDP;
-$db = new Database();
-$bdd=$db->getConnection();
-$user = new User($bdd);
-
-// Si il y a une session ouverte, on vas dans admin
-if ($user->isLoggedIn()) {
-    header("Location: admin.php");
-    exit;
-}
-
-// Login Membre
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action']=="login") {
-    $email = $_POST['loginemail'];
-    $password = $_POST['loginpassword'];
-
-    if ($user->login($email, $password)) {
-        header("Location: admin.php");
-        exit;
-    } else {
-        $error = "Le mail ou le mot de passe est invalide.";
-    }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action']=="creation") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prenom = htmlspecialchars(strip_tags($_POST['prenom']));
     $nom = htmlspecialchars(strip_tags($_POST['nom']));
     $datenaissance = htmlspecialchars(strip_tags($_POST['datenaissance']));
@@ -47,10 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action']=="creation") {
     !empty($mdp) &&
     !empty($tel)
     ) {
+
+        // Vérifi si le membre n'est pas deja dans la base de donnée avec l'email (login), sinon message Err.
+
+        // Ajoute le membre
         $query = "INSERT INTO membre (prenom, nom, dateNaissance, email, mdp, tel) VALUES (:prenom, :nom, :dateNaissance, :email, :mdp, :tel)";
         
-        //$db = new Database();
-        //$bdd=$db->getConnection();
+        $db = new Database();
+        $bdd=$db->getConnection();
         $stmt = $bdd->prepare($query);
 
         $stmt->bindParam(':prenom', $prenom);
@@ -69,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action']=="creation") {
 
             foreach ($JouerType as $value) {
                 $query = "INSERT INTO membredroit (Id_Membre, Id_JouerType) VALUES (:Id_Membre, :Id_JouerType)";
-                //$db = new Database();
-                //$bdd=$db->getConnection();
+                $db = new Database();
+                $bdd=$db->getConnection();
                 $stmt = $bdd->prepare($query);
                 $stmt->bindParam(':Id_Membre', $Id_Membre);
                 $stmt->bindParam(':Id_JouerType', $value);
@@ -83,31 +59,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action']=="creation") {
         echo "<p style='color: red;'>Tous les champs sont requis.</p>";
     }
 }
-
-
-
-
 ?>
 
-<!-- Login Page -->
-<div class="ConnexionLogin">
-    <h1>Login</h1>
-    <?php if (isset($error)): ?>
-        <p style="color: red;"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
-    <form method="post" action="">
-        <label for="email">email:</label>
-        <input type="text" id="loginemail" name="loginemail" required>
-        <br>
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="loginpassword" name="loginpassword" required>
-        <br>
-        <input type="hidden" name="action" value="login">
-        <button type="submit">Login</button>
-    </form>
-</div>
-
-<div class="ConnexionCreeCompte">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src= "js/creercompte.js"></script>
+    <style>
+        #extra-fields {
+           /* display: none;*/
+        }
+    </style>
+</head>
+<body>
     <h1>Créer un compte</h1>
     <?php if (isset($error)): ?>
         <p style="color: red;"><?= htmlspecialchars($error) ?></p>
@@ -156,12 +124,10 @@ foreach ($tab_JouerOption as $value) {
 
 
 ?>
-            <input type="hidden" name="action" value="creation">
+
             <button type="submit">Créer mon compte</button>
         </div>
     </form>
+</body>
+</html>
 
-</div>
-<?php
-include_once "footer.php";
-?>
