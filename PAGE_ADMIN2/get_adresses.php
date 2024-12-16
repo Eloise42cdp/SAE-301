@@ -8,7 +8,7 @@ $database = new Database();
 $pdo = $database->getConnection();
 
 try {
-    $stmt = $pdo->query('SELECT Id_collecte, lagitude, longitude, ville FROM collecte');
+    $stmt = $pdo->query('SELECT Id_collecte, ville, adresse, latitude, longitude, couleur FROM collecte');
     $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($addresses);
 } catch (PDOException $e) {

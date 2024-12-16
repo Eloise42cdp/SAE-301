@@ -1,35 +1,37 @@
 <?php
 require_once 'database.php';
+
 class Collecte{
     private $conn;
     private $table_name = "collecte";
 
-    public $id_Evenement;
-    public $nom;
-    public $dateDebut;
-    public $date_de_fin;
+    public $ville;
     public $adresse;
+    public $latitude;
+    public $longitude;
+    public $couleur;
 
     // Constructeur de la classe
-    public function __construct($db, $ville, $adresse, $lagitude, $longitude) {
+    public function __construct($db, $ville, $adresse, $latitude, $longitude, $couleur) {
         $this->conn = $db; // Connexion à la base de données
         $this->ville = $ville;
         $this->adresse = $adresse;
-        $this->lagitude = $lagitude;
+        $this->latitude = $latitude;
         $this->longitude = $longitude;
+        $this->couleur = $couleur;
     }
 
     
-    public function ajoutEvent (){
+    public function ajoutCollecte (){
         $database = new database();
         $actionsBDD = $database->getConnection(); 
 
-        $sql='INSERT INTO evenement (ville, adresse, lagitude, longitude)
-        VALUES (:ville, :adresse, :lagitude, :longitude)';	
+        $sql='INSERT INTO collecte (ville, adresse, latitude, longitude)
+        VALUES (:ville, :adresse, :latitude, :longitude)';	
         $param = [
             ':ville' => $this->ville,
             ':adresse' => $this->adresse,
-            ':lagitude' => $this->lagitude,
+            ':latitude' => $this->latitude,
             ':longitude' => $this->longitude,
         ];
 
@@ -48,7 +50,7 @@ class Collecte{
     }
     
     
-    public function supprimerEvent($id) {
+    public function supprimerCollecte($id) {
         $database = new database();
         $actionsBDD = $database->getConnection();
     

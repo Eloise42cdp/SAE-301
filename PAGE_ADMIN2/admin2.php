@@ -95,7 +95,7 @@
         <script src="admin_2.js"></script>
 
         <h2>Ajouter une adresse</h2>
-        <form method="POST" action="ajout_event.php">
+        <form method="POST" action="ajout_adresse.php">
             <label for="ville">Ville</label><br>
             <input type="text" id="ville" name="ville" required><br><br>
 
@@ -118,12 +118,12 @@
 
         <!-- Formulaire de suppression -->
         <h2>Supprimer une adresse </h2>
-        <form method="POST" action="supprimer_event.php">
-            <label for="nom">Adresse</label><br>
-            <select name="nom" id="nom" required>
-                <?php foreach ($evenements as $evenement): ?>
-                <option value="<?= htmlspecialchars($evenement['nom']); ?>">
-                    <?= htmlspecialchars($evenement['nom']); ?>
+        <form method="POST" action="supprimer_adresse.php">
+            <label for="adresse">Adresse</label><br>
+            <select name="adresse" id="adresse" required>
+                <?php foreach ($collecte as $collecte): ?>
+                <option value="<?= htmlspecialchars($collecte['adresse']); ?>">
+                    <?= htmlspecialchars($collecte['adresse']); ?>
                 </option>
                 <?php endforeach; ?>
             </select><br><br>

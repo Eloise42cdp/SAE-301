@@ -11,17 +11,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $ville = $_POST['ville'];
     $adresse = $_POST['adresse'];
-    $lagitude = $_POST['lagitude'];
+    $latitude = $_POST['latitude'];
     $longitude = $_POST['longitude'];
 
     // Crée un objet Evenement sans passer de $id_Evenement
-    $event = new Collecte(null, $ville, $adresse, $la, $adresse);
+    $event = new Collecte(null, $ville, $adresse, $latitude, $longitude);
 
     // Appelle la méthode pour ajouter l'événement
-    if ($event->ajoutEvent()) {
+    if ($event->ajoutCollecte()) {
         echo "L'événement a été ajouté avec succès !";
     } else {
         echo "Erreur lors de l'ajout de l'événement.";
     }
 }
+
+
+    
 ?>
+
