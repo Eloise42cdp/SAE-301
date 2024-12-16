@@ -105,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `membre` (
   `dateNaissance` date NOT NULL,
   `tel` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id_membre`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -164,7 +165,6 @@ INSERT INTO `membredroit` (`Id_Membre`, `Id_JouerType`) VALUES
 (13, 3),
 (13, 4),
 (13, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -223,6 +223,14 @@ CREATE TABLE IF NOT EXISTS `vente` (
   `Lieux` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id_Vente`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `mt`
+--
+
+INSERT INTO `mt` (`Id_membre`, `Id_membreType`) VALUES
+(1, 1),
+(2, 2);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
