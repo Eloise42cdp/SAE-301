@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 17 déc. 2024 à 09:41
+-- Généré le : mar. 17 déc. 2024 à 08:15
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `collecte`;
 CREATE TABLE IF NOT EXISTS `collecte` (
   `Id_collecte` int NOT NULL AUTO_INCREMENT,
-  `adresse` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `ville` int NOT NULL,
+  `adresse` int NOT NULL,
   `latitude` float DEFAULT NULL,
-  `longitude` float NOT NULL,
+  `longitude` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `couleur` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
-  `ville` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id_collecte`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
