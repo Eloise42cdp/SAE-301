@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 16 déc. 2024 à 14:03
+-- Généré le : lun. 16 déc. 2024 à 15:21
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `collecte` (
   `Id_collecte` int NOT NULL AUTO_INCREMENT,
   `ville` int NOT NULL,
   `adresse` int NOT NULL,
-  `lagitude` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
+  `latitude` float DEFAULT NULL,
   `longitude` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `couleur` varchar(6) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`Id_collecte`)
