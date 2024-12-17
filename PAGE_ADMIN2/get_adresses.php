@@ -7,6 +7,13 @@ header('Content-Type: application/json');
 $database = new Database();
 $pdo = $database->getConnection();
 
+
+// Récupérer la liste des points de collecte
+$sql = "SELECT Id_collecte, ville FROM collecte";
+$stmt = $db->prepare($sql);
+$stmt->execute();
+$evenements = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 try {
     $stmt = $pdo->query('SELECT Id_collecte, ville, adresse, latitude, longitude, couleur FROM collecte');
     $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -14,5 +21,4 @@ try {
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
-
 ?>

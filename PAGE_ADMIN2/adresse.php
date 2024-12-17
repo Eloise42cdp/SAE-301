@@ -12,7 +12,7 @@ class Collecte{
     public $couleur;
 
     // Constructeur de la classe
-    public function __construct($db, $ville, $adresse, $latitude, $longitude, $couleur) {
+    public function __construct($db, $ville, $adresse, $latitude, $longitude, $couleur){
         $this->conn = $db; // Connexion à la base de données
         $this->ville = $ville;
         $this->adresse = $adresse;
@@ -33,6 +33,7 @@ class Collecte{
             ':adresse' => $this->adresse,
             ':latitude' => $this->latitude,
             ':longitude' => $this->longitude,
+            
         ];
 
         // Préparer la requête
