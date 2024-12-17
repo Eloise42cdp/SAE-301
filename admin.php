@@ -1,5 +1,8 @@
 <?php
-if (!isset($_SESSION)) session_start();
+
+// Point d'entre pour les meembre ou admin
+
+//if (!isset($_SESSION)) session_start();
 include_once "class/bdd.php";
 include_once "class/user.php";
 
@@ -9,14 +12,41 @@ include_once "class/user.php";
 $db = (new Database())->getConnection();
 $user = new User($db);
 
+// Si pas de connexion, on quite l'espace membre
 if (!$user->isLoggedIn()) {
     header("Location: connexion.php");
     exit;
 }
 
+// Si on clic sur logout
 if (isset($_GET['logout'])) {
     $user->logout();
 }
+
+// Redirection selon le rôle du membre
+if ($user->isAdmin()) {
+    header('Location: accueil_admin.php');
+} else {
+    header('Location: accueil_membre.php');
+}
+exit;
+
+
+
+
+
+
+
+// on charge les informations du membre
+$user->GetInfoMembre();
+echo "<br>IdUser:".$user->IdUser;
+echo "<br>TypeMembre:".$user->TypeMembre;
+
+// Si on clic sur logout
+if (isset($_GET['logout'])) {
+    $user->logout();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">

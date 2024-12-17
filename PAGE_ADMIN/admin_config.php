@@ -2,6 +2,9 @@
 
 // Database connection
 class Database {
+    
+    private static $instance = NULL;
+    private $connexion;
     private $host = "localhost";
     private $db_name = "afaj";
     private $username = "root";
@@ -18,5 +21,17 @@ class Database {
         }
         return $this->bdd;
     }
+
+    public function insertDonnees($requete, $params = []) {
+        try {
+            $stmt = $this->bdd->prepare($requete);
+            $stmt->execute($params);
+            return $this->bdd->lastInsertId(); // retourne l'ID de la dernière insertion
+        } catch (PDOException $e) {
+            echo "Échec lors de l'enregistrement des données : " . $e->getMessage();
+            return false;
+        }
+    }
 }
-?>
+
+
