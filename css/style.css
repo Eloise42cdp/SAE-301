@@ -9,7 +9,8 @@ p {
     margin: 0;
     padding: 0;
 }
-h1 h2 h3 h4 {
+
+h1, h2, h3, h4 {
     font-family: 'Oswald' , sans-serif;
     margin: 0;
     padding: 0;
@@ -26,7 +27,7 @@ h1 h2 h3 h4 {
     border-bottom: 1px solid #ccc;
     position: relative;
     overflow: hidden;
-    clip-path: ellipse(100% 100% at 50% 0); 
+    clip-path: ellipse(100% 100% at 50% 0);
 }
 
 /* Logo */
@@ -117,26 +118,6 @@ h1 h2 h3 h4 {
     object-fit: contain;
 }
 
-/* Media query pour écrans de 780px et moins */
-@media screen and (max-width: 780px) {
-    .btn {
-        width: 40px;
-        height: 40px;
-        padding: 0;
-        border-radius: 50%; /* Bouton rond */
-        justify-content: center;
-        margin-right: 2vh;
-    }
-
-    .btn-text {
-        display: none; /* Cache le texte du bouton */
-    }
-
-    .btn-icon {
-        display: inline-block; /* Affiche uniquement l'icône */
-    }
-}
-
 /* Icône Facebook */
 .social-link {
     /*display: inline-block;*/
@@ -148,28 +129,9 @@ h1 h2 h3 h4 {
     height: 2em;
 }
 
-/* --- Éléments généraux --- */
-
-/* Media query pour écrans de 768px et moins */
-@media screen and (max-width: 768px) {
-    .btn-contact {
-        width: 40px;
-        height: 40px;
-        padding: 0;
-        border-radius: 50%; /* Bouton rond */
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn-contact .contact-text {
-        display: none; /* Cache le texte du bouton */
-    }
-
-    .btn-contact .contact-icon {
-        display: block; /* Affiche uniquement l'icône */
-    }
-}
 
 /*Page Accueil */
+
 
 /* Qui sommes nous ? */
 /* Style pour l'image dans la section "Qui sommes-nous ?" */
@@ -243,6 +205,21 @@ h2.fw-bold {
 .row {
     justify-content: center; 
 }
+
+/*carte*/
+#map {
+    height: 40em;
+    width: 80%;
+    max-width: 50em;
+    margin: 0 auto;
+    border: 0.2em solid #a4c7e2;
+    border-radius: 2em;
+  }
+  
+  .iconeMap {
+    height: 2em;
+    width: 2em;
+  }  
 
 /*Page Connexion*/
 .connexion {
@@ -325,20 +302,6 @@ h2.fw-bold {
     box-shadow: 0.3em 0.3em 0.6em rgba(0, 0, 0, 0.3);
 }
 
-/* Adaptation pour les écrans plus petits */
-@media (max-width: 768px) {
-    .connexion {
-        flex-direction: column; 
-        gap: 3em; 
-    }
-
-    .col:not(:last-child) {
-        border-right: none; /* Supprimer le trait vertical */
-        border-bottom: 0.2em solid #ccc; /* Ajouter un trait horizontal entre les colonnes */
-        padding-bottom: 2em;
-    }
-}
-
 /*page contact*/
 .contact {
     background-color: #a4c7e2; 
@@ -365,5 +328,94 @@ h2.fw-bold {
 }
 
 .rs p {
-    margin-top: 0;
+    margin-top: 0; 
+}
+
+/*PAGE ACCUEIL ADMIN*/
+.containerA {
+    margin: 6em;
+    margin-bottom: 2em;
+}
+
+.titreA {
+    margin-bottom: 2em;
+}
+
+/*Boutons accueil admin*/
+
+.btnA {
+    justify-items: center; /* Centrer les boutons dans leur colonne */
+    align-items: center; /* Centrer les lignes */
+    margin-top: 2em;
+    padding: 2em;
+    font-size: 1.2em;
+}
+
+.btnA1, .btnA2, .btnA3, .btnA4 { 
+    background-color: #f4979c;
+    color: rgb(251, 255, 195);
+    border: none;
+    padding: 1em; /* Taille intérieure adaptée */
+    border-radius: 1em; /* Coins arrondis */
+    font-weight: bold;
+    box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    width: 40em; /* Largeur relative au conteneur */
+    height: 15em; /* Laisser la hauteur s'ajuster */
+    aspect-ratio: 1 / 1; /* Hauteur égale à la largeur */
+    text-align: center; /* Centrer le texte */
+    transition: all 0.3s ease;
+} 
+
+/* Hover */
+.btnA1:hover, .btnA2:hover, .btnA3:hover, .btnA4:hover {
+    background-color: rgb(251, 255, 195);
+    color: rgb(194, 200, 255);
+    box-shadow: 0.4em 0.4em 0.8em rgba(0, 0, 0, 0.3);
+}
+
+/* --- Éléments généraux --- */
+
+/* Media query pour écrans de 768px et moins */
+@media screen and (max-width: 768px) {
+    .btn-contact {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border-radius: 50%; /* Bouton rond */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-contact .contact-text {
+        display: none; /* Cache le texte du bouton */
+    }
+
+    .btn-contact .contact-icon {
+        display: block; /* Affiche uniquement l'icône */
+    }
+    .btnA {
+        grid-template-columns: 1fr; /* Une seule colonne */
+    }
+    .btnA1, .btnA2, .btnA3, .btnA4 {
+        width: 70%; /* Largeur plus grande pour s'adapter aux écrans étroits */
+    }
+    .connexion {
+        flex-direction: column; 
+        gap: 3em; 
+    }
+
+    .col:not(:last-child) {
+        border-right: none; /* Supprimer le trait vertical */
+        border-bottom: 0.2em solid #ccc; /* Ajouter un trait horizontal entre les colonnes */
+        padding-bottom: 2em;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .btnA1, .btnA2, .btnA3, .btnA4 {
+        width: 70%; /* Largeur plus grande pour s'adapter aux écrans étroits */
+    }
 }

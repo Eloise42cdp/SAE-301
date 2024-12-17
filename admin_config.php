@@ -6,7 +6,7 @@ class Database {
     private static $instance = NULL;
     private $connexion;
     private $host = "localhost";
-    private $db_name = "afaj";
+    private $db_name = "afaj2";
     private $username = "root";
     private $password = "";
     public $bdd;

@@ -2,7 +2,7 @@
 let map = L.map('map').setView([46.1, 4.05], 9);
 
 // Ajout d'une couche de tuiles OpenStreetMap
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
@@ -25,3 +25,25 @@ pointsCollecte.forEach(point => {
         fillOpacity: 0.8
     }).addTo(map).bindPopup(point.description);
 });
+
+// Fonction pour charger les adresses depuis la BDD
+function loadAddresses() {
+    fetch('get_adresses.php')  
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                console.error(data.error);
+            } else {
+                data.forEach(adresse => {
+                    L.marker([adresse.latitude, adresse.longitude])
+                        .addTo(map)
+                        .bindPopup(adresse.description);
+                });
+            }
+        })
+        .catch(error => console.error('Erreur de chargement des adresses:', error));
+}
+
+
+// Charger les adresses depuis la BDD au chargement de la page
+loadAddresses();
