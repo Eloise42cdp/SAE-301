@@ -1,11 +1,13 @@
 <?php
 namespace Admin;
 
+use PDO;  // Importation de la classe PDO
+
 class Database {
     private $host = "localhost";
     private $db_name = "afaj2";  // Nom de ta base de données
-    private $username = "root";   // Nom d'utilisateur de la base de données
-    private $password = "";       // Mot de passe de la base de données
+    private $username = "root";  // Nom d'utilisateur de la base de données
+    private $password = "";  // Mot de passe de la base de données
     public $conn;
 
     public function getConnection() {
@@ -21,6 +23,8 @@ class Database {
         return $this->conn;
     }
 }
+
+// Le code suivant peut être dans un fichier séparé ou dans le même fichier
 
 try {
     // Créer une instance de la classe Database
