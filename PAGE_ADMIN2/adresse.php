@@ -22,34 +22,41 @@ class Collecte{
     }
 
     
-    public function ajoutCollecte (){
-        $database = new database();
+    public function ajoutCollecte () {
+        $database = new Database(); // Remarque : la classe Database commence par une majuscule
         $actionsBDD = $database->getConnection(); 
-
-        $sql='INSERT INTO collecte (ville, adresse, latitude, longitude, couleur)
-        VALUES (:ville, :adresse, :latitude, :longitude, : couleur)';	
+    
+        if (!$actionsBDD) {
+            echo "Erreur de connexion à la base de données.";
+            return;
+        }
+    
+        $sql = 'INSERT INTO collecte (ville, adresse, latitude, longitude, couleur)
+                VALUES (:ville, :adresse, :latitude, :longitude, :couleur)';  
+    
+        // Paramètres de la requête
         $param = [
             ':ville' => $this->ville,
             ':adresse' => $this->adresse,
             ':latitude' => $this->latitude,
             ':longitude' => $this->longitude,
             ':couleur' => $this->couleur,
-            
         ];
-
-        // Préparer la requête
-        $stmt = $actionsBDD->prepare($sql);
     
-        // Exécuter la requête avec les paramètres
-        $result = $stmt->execute($param);
-
-        if ($result) {
-            echo "Point de collecte ajouté avec succès !";
-        } else {
-            echo "Erreur lors de l'ajout du point de collecte.";
+        // Afficher les paramètres pour vérifier
+        echo "Paramètres envoyés : " . print_r($param, true);
+    
+        // Préparer et exécuter la requête
+        try {
+            $stmt = $actionsBDD->prepare($sql);
+            $result = $stmt->execute($param);
+    
+            
+        } catch (PDOException $e) {
+            echo "Erreur d'exécution de la requête : " . $e->getMessage();
         }
-        
     }
+    
     
     
     public function supprimerCollecte($id) {
