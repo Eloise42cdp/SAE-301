@@ -83,35 +83,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action']=="creation") {
         echo "<p style='color: red;'>Tous les champs sont requis.</p>";
     }
 }
-
-
-
-
 ?>
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="css/style.css?v=1.0" rel="stylesheet">
+    
+</head>
+<body>
 <!-- Login Page -->
-<div class="ConnexionLogin">
-    <h1>Login</h1>
+<section class="connexion">
+    <div class="col">
+        <div class="titre">
+    <h1>Connectez-vous à votre compte AFAJ</h1>
     <?php if (isset($error)): ?>
         <p style="color: red;"><?= htmlspecialchars($error) ?></p>
     <?php endif; ?>
+    </div>
+        <div class="champsConnexion">
     <form method="post" action="">
-        <label for="email">email:</label>
-        <input type="text" id="loginemail" name="loginemail" required>
-        <br>
+            <label for="email">Email:</label>
+            <input type="text" id="loginemail" name="loginemail" required>
+            <br>
         <label for="password">Mot de passe :</label>
         <input type="password" id="loginpassword" name="loginpassword" required>
         <br>
         <input type="hidden" name="action" value="login">
-        <button type="submit">Login</button>
+        <button class="btn1" type="submit">Se connecter</button>
     </form>
+    <img src="img/banderolee.png" class="img-fluid" alt="Banderole">
+    </div>
 </div>
 
-<div class="ConnexionCreeCompte">
-    <h1>Créer un compte</h1>
+<div class="col">
+<div class="titre">
+    <h1>Créez votre compte AFAJ et devenez membre</h1>
     <?php if (isset($error)): ?>
         <p style="color: red;"><?= htmlspecialchars($error) ?></p>
     <?php endif; ?>
+    <div class="champsConnexion">
     <form method="post" action="">
         <label for="prenom">Prénom :</label>
         <input type="text" id="prenom" name="prenom" required>
@@ -121,8 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action']=="creation") {
         <br>
         <label for="date">Date de naissance :</label>
         <input type="date" id="datenaissance" name="datenaissance" required>
-        <div id="extra-fields">
-            <br>
+        
+        <div class="champsConnexion" id="extra-fields" style="display: none;">
             <label for="email">Email :</label>
             <input type="email" id="email" name="email">
             <br>
@@ -131,14 +147,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action']=="creation") {
             <br>
             <label for="phone">Téléphone :</label>
                 <input type="tel" id="tel" name="tel" maxlength="20">
-            <br>
+            <br><br>
+            <div class="checkbox">
+                <h6>Je souhaite participer :</h6>
             <label>
-                <input type="checkbox" id="select-all"> aux collectes des jouets
+                <input type="checkbox" id="select-all"> Aux collectes des jouets
             </label>
             <label>
-                <input type="checkbox" id="deselect-all"> ne sais pas
+                <input type="checkbox" id="deselect-all"> Ne sais pas
             </label>
-            <br>
+            </div>
+    </div>
 <?php
 
 $db = new Database();
@@ -153,15 +172,17 @@ foreach ($tab_JouerOption as $value) {
     echo '<input type="checkbox" class="options" name="JouerType[]" value="'.$value['Id_JouerType'].'">'.$value['nom'];
     echo "</label>";
 }
-
-
 ?>
             <input type="hidden" name="action" value="creation">
-            <button type="submit">Créer mon compte</button>
+            <button class="btn1" type="submit">Créer mon compte</button>
         </div>
     </form>
-
 </div>
+</div>
+</section>
+</body>
+</html>
+
 <?php
 include_once "footer.php";
 ?>
