@@ -1,24 +1,35 @@
 <?php
-require_once '../admin_config.php';
+// Inclure la classe Database pour la connexion à la BDD
+require_once 'admin_config.php';
 
-header('Content-Type: application/json');
-
-// Créer une instance de la connexion à la base de données
+// Créer une instance de la classe Database
 $database = new Database();
-$pdo = $database->getConnection();
+$db = $database->getConnection();
 
+// Vérifier si la connexion à la base de données a réussi
+if ($db === null) {
+    echo json_encode(["error" => "Impossible de se connecter à la base de données."]);
+    exit();
+}
 
-// Récupérer la liste des points de collecte
-$sql = "SELECT Id_collecte, ville FROM collecte";
+// Préparer la requête pour récupérer les adresses
+$sql = "SELECT latitude, longitude, description FROM collecte"; // Remplace 'collecte' par le nom de ta table
 $stmt = $db->prepare($sql);
 $stmt->execute();
-$evenements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-try {
-    $stmt = $pdo->query('SELECT Id_collecte, ville, adresse, latitude, longitude, couleur FROM collecte');
-    $addresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($addresses);
-} catch (PDOException $e) {
-    echo json_encode(['error' => $e->getMessage()]);
+// Récupérer les résultats
+$adresses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Vérifier si des résultats ont été trouvés
+if (count($adresses) > 0) {
+    // Retourner les résultats sous forme de JSON
+    echo json_encode($adresses);
+} else {
+    // Aucun résultat trouvé
+    echo json_encode(["error" => "Aucune adresse trouvée."]);
 }
+
+// Fermer la connexion
+$db = null;
 ?>
+

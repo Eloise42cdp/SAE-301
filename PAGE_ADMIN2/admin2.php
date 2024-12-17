@@ -85,7 +85,34 @@
 
             <!-- Colonne pour la carte (à droite) -->
             <div class="col-md-7">
-                <div id="map"></div>
+            <div id="map"></div>
+
+            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+            <script>
+            // Ton code JavaScript ici
+            // Fonction pour charger les adresses depuis la BDD
+            function loadAddresses() {
+                fetch('get_adresses.php')  // Appel à ton fichier PHP
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            console.error(data.error);
+                        } else {
+                            // Ajouter les marqueurs à la carte pour chaque adresse
+                            data.forEach(adresse => {
+                                L.marker([adresse.latitude, adresse.longitude])
+                                    .addTo(map)
+                                    .bindPopup(adresse.description);
+                            });
+                        }
+                    })
+                    .catch(error => console.error('Erreur de chargement des adresses:', error));
+            }
+
+            // Charger les adresses depuis la BDD au chargement de la page
+            loadAddresses();
+            </script>
+
             </div>
         </div>
 

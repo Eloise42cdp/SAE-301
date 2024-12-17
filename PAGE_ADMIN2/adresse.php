@@ -26,13 +26,14 @@ class Collecte{
         $database = new database();
         $actionsBDD = $database->getConnection(); 
 
-        $sql='INSERT INTO collecte (ville, adresse, latitude, longitude)
-        VALUES (:ville, :adresse, :latitude, :longitude)';	
+        $sql='INSERT INTO collecte (ville, adresse, latitude, longitude, couleur)
+        VALUES (:ville, :adresse, :latitude, :longitude, : couleur)';	
         $param = [
             ':ville' => $this->ville,
             ':adresse' => $this->adresse,
             ':latitude' => $this->latitude,
             ':longitude' => $this->longitude,
+            ':couleur' => $this->couleur,
             
         ];
 
