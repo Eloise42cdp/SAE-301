@@ -37,7 +37,7 @@
                 <div class="col-2 text-right">
                     <a href="admin.php?logout">
                         <button class="btn">
-                            <span class="btn-text">De-CONNEXION</span>
+                            <span class="btn-text">DECONNEXION</span>
                             <span class="btn-icon">
                                 <img src="img/user.png" alt="Connexion" class="btn-img">
                             </span>
