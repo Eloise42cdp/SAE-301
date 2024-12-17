@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="admin_2.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <?php //include 'get_adresses.php';?>
 
@@ -25,7 +25,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-2">
-                        <a href="Accueil.html"><img src="IMAGE/logo.png" alt="Logo" class="header-logo"></a>
+                        <a href="Accueil.html"><img src="../img/logo.png" alt="Logo" class="header-logo"></a>
                     </div>
                     <div class="col-8 text-center">
                         <h1 class="header-title">Espace Administrateur</h1>
@@ -34,9 +34,9 @@
                     <div class="col-2 text-right">
                         <a href="#">
                             <button class="btn">
-                                <span class="btn-text">CONNEXION</span>
+                                <span class="btn-text">DECONNEXION</span>
                                 <span class="btn-icon">
-                                    <img src="IMAGE/user.png" alt="DECONNEXION" class="btn-img">
+                                    <img src="../img/user.png" alt="DECONNEXION" class="btn-img">
                                 </span>
                             </button>
                         </a>
@@ -57,27 +57,27 @@
                 <div class="text-left">
                     <p>
                         <strong>ROANNE</strong><br>
-                        <img class="iconeMap" src="images/epingle-2.png">
+                        <img class="iconeMap" src="../img/epingle-2.png">
                         Club Suzanne Lacore - 29 rue Bravard<br>
-                        <img class="iconeMap" src="images/epingle-5.png">
+                        <img class="iconeMap" src="../img/epingle-5.png">
                         Club Jean Puy - 5 rue Jean Puy<br>
-                        <img class="iconeMap" src="images/epingle-6.png">
+                        <img class="iconeMap" src="../img/epingle-6.png">
                         Centre social La Livatte - 97 rue A. Thomas<br><br>
 
                         <strong>RIORGES</strong><br>
-                        <img class="iconeMap" src="images/epingle-7.png">
+                        <img class="iconeMap" src="../img/epingle-7.png">
                         Centre social - 1 place Jean Cocteau<br><br>
 
                         <strong>LE COTEAU</strong><br>
-                        <img class="iconeMap" src="images/epingle-4.png">
+                        <img class="iconeMap" src="../img/epingle-4.png">
                         Centre social - 3 rue Auguste Gelin<br><br>
 
                         <strong>CHARLIEU</strong><br>
-                        <img class="iconeMap" src="images/epingle-8.png">
+                        <img class="iconeMap" src="../img/epingle-8.png">
                         M.J.C. - 1 rue du Pont de Pierre<br><br>
 
                         <strong>SAINT JULIEN DE JONZY</strong><br>
-                        <img class="iconeMap" src="images/epingle.png">
+                        <img class="iconeMap" src="../img/epingle.png">
                         Décheterie - Lieu dit La Thuillere
                     </p>
                 </div>
@@ -116,12 +116,13 @@
             </div>
         </div>
 
-
         <!-- Intégration de Leaflet JS -->
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <script src="admin_2.js"></script>
 
+        <section class="block">
         <h2>Ajouter une adresse</h2>
+        <div class="champs">
         <form method="POST" action="ajout_adresse.php">
             <label for="ville">Ville</label><br>
             <input type="text" id="ville" name="ville" required><br><br>
@@ -138,13 +139,16 @@
             <label for="couleur">Couleur</label><br>
             <input type="text" id="couleur" name="couleur" required><br><br>
 
-            <button type="submit">AJOUTER</button><br><br>
+            <button class="btnB" type="submit">AJOUTER</button><br><br>
         </form>
+        </div>
+        </section>
 
 
-
+        <section class="block">
         <!-- Formulaire de suppression -->
         <h2>Supprimer une adresse </h2>
+        <div class="champs">
         <form method="POST" action="supprimer_adresse.php">
             <label for="adresse">Adresse</label><br>
             <select name="adresse" id="adresse" required>
@@ -154,9 +158,10 @@
                 </option>
                 <?php endforeach; ?>
             </select><br><br>
-            <button type="submit">SUPPRIMER</button><br><br>
+            <button class="btnB" type="submit">SUPPRIMER</button><br><br>
         </form>
-
+        </div>
+        </section>
 
 
     </div>
@@ -166,7 +171,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-2">
-                        <img src="IMAGE/logo.png" alt="Logo" class="footer-logo">
+                        <img src="../img/logo.png" alt="Logo" class="footer-logo">
                     </div>
                     <div class="col-8 text-center">
                         <p class="footer-title">Amis de la Foire Aux Jouets</p>
@@ -177,12 +182,12 @@
                             <button class="btn">
                                 <span class="btn-text">CONTACT</span>
                                 <span class="btn-icon">
-                                    <img src="IMAGE/user.png" alt="Contact" class="btn-img">
+                                    <img src="../img/user.png" alt="Contact" class="btn-img">
                                 </span>
                             </button>
                         </a>
                         <a href="#" class="social-link">
-                            <img src="IMAGE/facebook.png" alt="Facebook" class="social-icon">
+                            <img src="../img/facebook.png" alt="Facebook" class="social-icon">
                         </a>
                     </div>
                 </div>
