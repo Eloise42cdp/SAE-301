@@ -14,6 +14,8 @@
     <!-- Login et Creation de compte -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src= "creercompte.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     
     <style>
         #extra-fields {
@@ -37,7 +39,7 @@
                 <div class="col-2 text-right">
                     <a href="admin.php?logout">
                         <button class="btn">
-                            <span class="btn-text">De-CONNEXION</span>
+                            <span class="btn-text">DECONNEXION</span>
                             <span class="btn-icon">
                                 <img src="img/user.png" alt="Connexion" class="btn-img">
                             </span>
