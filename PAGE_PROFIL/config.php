@@ -8,7 +8,7 @@
 
     try {
         // Connexion à la base de données avec PDO
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+        $pdo = new PDO('mysql:host=localhost;dbname=afaj', 'root', '');
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
         die("Erreur de connexion : " . $e->getMessage());
@@ -20,19 +20,9 @@
         $nom = htmlspecialchars($_POST['nom']);
         $email = htmlspecialchars($_POST['email']);
         $date_naissance = htmlspecialchars($_POST['date_naissance']);
-        $telephone = htmlspecialchars($_POST['telephone']);
-       
-    
-        // Requête SQL pour mettre à jour les informations
-        $sql = "UPDATE utilisateurs SET prenom=?, nom=?, email=?, date_naissance=?, telephone=?,  WHERE Id_membre=?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$prenom, $nom, $email, $date_naissance, $telephone, , 1]); // Remplace 1 par l'ID utilisateur
+        $telephone = htmlspecialchars($_POST['telephone']); 
     }
     
 
-
-
-
-
- ?>
+?>
  

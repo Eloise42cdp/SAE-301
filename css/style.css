@@ -157,6 +157,34 @@ h2.fw-bold {
     margin-bottom: 1rem; 
 }
 
+/*événement foire*/
+.event-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.event-date, .event-foire {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.event-foire {
+    margin-right: 0;
+}
+
+#pFoire {
+    margin: 5px 0;
+}
+
+.titreFoire {
+    text-align: center;
+}
+
+#pFoire {
+    font-size: 150%;
+}
+
 /* Les membres du bureau */
 /* Style général pour les étiquettes */
 .member-card {

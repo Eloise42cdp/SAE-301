@@ -35,6 +35,37 @@ include_once "header.php";
 </div>
 <div class="container my-5">
 
+<?php
+include 'PAGE_PROFIL/config.php';
+
+// Récupérer les événements depuis la BDD
+$query = $pdo->query("SELECT * FROM evenement ORDER BY dateDebut ASC");
+$evenements = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
+<div class="block">
+    <div class="titreFoire">
+        <h1>Événement</h1><br>
+    </div>
+    <?php foreach ($evenements as $event): ?>
+        <div class="col">
+            <div class="event-details">
+                <div class="event-date">
+                    <h2><strong>Date :</strong></h2>
+                    <p id="pFoire"><?= date("d/m/Y H:i", strtotime($event['dateDebut'])); ?> au 
+                    <?= date("d/m/Y H:i", strtotime($event['dateFin'])); ?></p><br>
+                </div>
+                
+                <div class="event-foire">
+                    <h2><strong>Prochaine Foire aux Jouets 2025</strong></h2><br>
+                    <p id="pFoire"><strong>Lieu :</strong> <?= htmlspecialchars($event['adresse']); ?></p>
+                    <p id="pFoire"><strong>Nom :</strong> <?= htmlspecialchars($event['nom']); ?></p>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
 <!-- Titre principal -->
 <h1 class="text-center mb-4">Nos points de collecte</h1>
 <!-- Texte -->
@@ -80,11 +111,13 @@ include_once "header.php";
     <div id="map"></div>
   </div>
 </div>
+<hr>
 </div>
 
 <!-- Intégration de Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script src="js/carte.js"></script>
+
 
 
 <!-- Membres du Bureau -->
