@@ -55,31 +55,7 @@
             <!-- Colonne pour le texte (à gauche) -->
             <div class="col-md-5 d-flex flex-column align-items-center">
                 <div class="text-left">
-                    <p>
-                        <strong>ROANNE</strong><br>
-                        <img class="iconeMap" src="images/epingle-2.png">
-                        Club Suzanne Lacore - 29 rue Bravard<br>
-                        <img class="iconeMap" src="images/epingle-5.png">
-                        Club Jean Puy - 5 rue Jean Puy<br>
-                        <img class="iconeMap" src="images/epingle-6.png">
-                        Centre social La Livatte - 97 rue A. Thomas<br><br>
 
-                        <strong>RIORGES</strong><br>
-                        <img class="iconeMap" src="images/epingle-7.png">
-                        Centre social - 1 place Jean Cocteau<br><br>
-
-                        <strong>LE COTEAU</strong><br>
-                        <img class="iconeMap" src="images/epingle-4.png">
-                        Centre social - 3 rue Auguste Gelin<br><br>
-
-                        <strong>CHARLIEU</strong><br>
-                        <img class="iconeMap" src="images/epingle-8.png">
-                        M.J.C. - 1 rue du Pont de Pierre<br><br>
-
-                        <strong>SAINT JULIEN DE JONZY</strong><br>
-                        <img class="iconeMap" src="images/epingle.png">
-                        Décheterie - Lieu dit La Thuillere
-                    </p>
                 </div>
             </div>
 
@@ -122,26 +98,27 @@
         <script src="admin_2.js"></script>
 
         <h2>Ajouter une adresse</h2>
-        <form method="POST" action="ajout_adresse.php">
-            <label for="ville">Ville</label><br>
-            <input type="text" id="ville" name="ville" required><br><br>
+            <form id="addAddressForm" method="POST" action="ajout_adresse.php">
+                <label for="ville">Ville</label><br>
+                <input type="text" id="ville" name="ville" required><br><br>
 
-            <label for="adresse">Adresse</label><br>
-            <input type="text" id="adresse" name="adresse" required><br><br>
+                <label for="adresse">Adresse</label><br>
+                <input type="text" id="adresse" name="adresse" required><br><br>
 
-            <label for="longitude">Longitude</label><br>
-            <input type="text" id="longitude" name="longitude" required><br><br>
+                <label for="longitude">Longitude</label><br>
+                <input type="text" id="longitude" name="longitude" required><br><br>
 
-            <label for="latitude">Latitude</label><br>
-            <input type="text" id="latitude" name="latitude" required><br><br>
+                <label for="latitude">Latitude</label><br>
+                <input type="text" id="latitude" name="latitude" required><br><br>
 
-            <label for="couleur">Couleur</label><br>
-            <input type="text" id="couleur" name="couleur" required><br><br>
+                <label for="couleur">Couleur</label><br>
+                <input type="text" id="couleur" name="couleur" required><br><br>
 
-            <button type="submit">AJOUTER</button><br><br>
-        </form>
+                <button type="submit">AJOUTER</button><br><br>
+            </form>
 
 
+            
 
         <!-- Formulaire de suppression -->
         <h2>Supprimer une adresse </h2>
