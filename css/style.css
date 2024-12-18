@@ -419,3 +419,65 @@ h2.fw-bold {
         width: 70%; /* Largeur plus grande pour s'adapter aux écrans étroits */
     }
 }
+
+/*PAGE AJOUT MODIF SUPP ADMIN*/
+
+.block {
+    background-color: #a4c7e2; 
+    padding: 5%; 
+    margin-top: 5%;
+    margin-bottom: 5%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.champs {
+    margin-top: 1.5em; 
+}
+
+.champs form {
+    display: grid;
+    flex-direction: column; 
+    gap: 1em; 
+}
+
+.champs input {
+    width: 100%; 
+    max-width: 400px;
+    padding: 0.8em; 
+    border: 0.1em solid #ccc; 
+    border-radius: 0.3em; 
+    font-size: 1em; 
+    box-sizing: border-box; 
+}
+
+.champs select {
+    width: 100%; 
+    max-width: 400px;
+    padding: 0.8em; 
+    border: 0.1em solid #ccc; 
+    border-radius: 0.3em; 
+    font-size: 1em; 
+    box-sizing: border-box; 
+}
+
+.btnB {
+    background-color: #f4979c;
+    color: rgb(251, 255, 195);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10vh;
+    font-weight: bold;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    gap: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    max-width: 10em;
+}
+
+
+/* Style au survol */
+.btnB:hover {
+    background-color: rgb(251, 255, 195);
+    color: rgb(194, 200, 255);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}

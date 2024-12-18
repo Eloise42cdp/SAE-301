@@ -19,10 +19,10 @@ class User {
     }
 
     private function setRole() {
-        $query = "SELECT MembreType.nom AS role
+        $query = "SELECT membretype.nom AS role
                   FROM membre
-                  INNER JOIN MT ON membre.Id_Membre = MT.Id_Membre
-                  INNER JOIN MembreType ON MT.Id_MembreType = MembreType.Id_MembreType
+                  INNER JOIN mt ON membre.Id_Membre = mt.Id_Membre
+                  INNER JOIN membretype ON mt.Id_MembreType = membretype.Id_MembreType
                   WHERE membre.Id_Membre = :id";
 
         $stmt = $this->bdd->prepare($query);
@@ -84,4 +84,5 @@ class User {
         $this->TypeMembre = "admin";
     }
 }
-?>
+
+
