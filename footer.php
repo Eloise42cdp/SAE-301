@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <a href="index.php"><img src="img/logo.png" alt="Logo" class="footer-logo"></a>
+                    <a href="index.php"><img src="../img/logo.png" alt="Logo" class="footer-logo"></a>
                 </div>
                 <div class="col-8 text-center">
                     <p class="footer-title">Amis de la Foire Aux Jouets</p>
@@ -15,12 +15,12 @@
                         <button class="btn">
                             <span class="btn-text">CONTACT</span>
                             <span class="btn-icon">
-                                <img src="img/user.png" alt="Contact" class="btn-img">
+                                <img src="../img/user.png" alt="Contact" class="btn-img">
                             </span>
                         </button>
                     </a>
                     <a href="#" class="social-link">
-                        <img src="img/facebook.png" alt="Facebook" class="social-icon">
+                        <img src="../img/facebook.png" alt="Facebook" class="social-icon">
                     </a>
                 </div>
             </div>
