@@ -7,7 +7,8 @@
                 </div>
                 <div class="col-8 text-center">
                     <p class="footer-title">Amis de la Foire Aux Jouets</p>
-                    <p class="footer-legal">AFAJ / Tous droits réservés / Mentions légales</p>
+                    <p class="footer-legal">AFAJ / Tous droits réservés / <a href="mentions.php">Mentions légales</a></p>
+
                 </div>
                 <div class="col-2 text-right">
                     <a href="contact.php">

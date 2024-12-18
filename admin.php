@@ -1,6 +1,6 @@
 <?php
 
-// Point d'entre pour les membre ou admin
+// Point d'entre pour les meembre ou admin
 
 //if (!isset($_SESSION)) session_start();
 include_once "class/bdd.php";
@@ -12,10 +12,10 @@ include_once "class/user.php";
 $db = (new Database())->getConnection();
 $user = new User($db);
 
-//Si pas de connexion, on quite l'espace membre
+// Si pas de connexion, on quite l'espace membre
 if (!$user->isLoggedIn()) {
     header("Location: connexion.php");
-   exit;
+    exit;
 }
 
 // Si on clic sur logout
@@ -30,6 +30,12 @@ if ($user->isAdmin()) {
     header('Location: accueil_membre.php');
 }
 exit;
+
+
+
+
+
+
 
 // on charge les informations du membre
 $user->GetInfoMembre();
