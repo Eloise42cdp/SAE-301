@@ -7,11 +7,11 @@ include_once "header.php";
 <div class="container my-5">
     <div class="row equal-height">
         <!-- Section Image -->
-        <div class="col-md-6">
+        <div class="col-12 col-md-6">
             <img src="img/flyer.jpg" alt="Foire aux Jouets" class="img-fluid img-equal">
         </div>
         <!-- Section Texte -->
-        <div class="col-md-6 d-flex">
+        <div class="col-12 col-md-6 d-flex">
             <div class="d-flex flex-column justify-content-between">
                 <h2 class="fw-bold">Qui sommes nous ?</h2>
                 <p class="text-justify">
@@ -35,6 +35,37 @@ include_once "header.php";
 </div>
 <div class="container my-5">
 
+<?php
+include 'PAGE_PROFIL/config.php';
+
+// Récupérer les événements depuis la BDD
+$query = $pdo->query("SELECT * FROM evenement ORDER BY dateDebut ASC");
+$evenements = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
+<div class="block">
+    <div class="titreFoire">
+        <h1>Événement</h1><br>
+    </div>
+    <?php foreach ($evenements as $event): ?>
+        <div class="col">
+            <div class="event-details">
+                <div class="event-date">
+                    <h2><strong>Date :</strong></h2>
+                    <p id="pFoire"><?= date("d/m/Y H:i", strtotime($event['dateDebut'])); ?> au 
+                    <?= date("d/m/Y H:i", strtotime($event['dateFin'])); ?></p><br>
+                </div>
+                
+                <div class="event-foire">
+                    <h2><strong>Prochaine Foire aux Jouets 2025</strong></h2><br>
+                    <p id="pFoire"><strong>Lieu :</strong> <?= htmlspecialchars($event['adresse']); ?></p>
+                    <p id="pFoire"><strong>Nom :</strong> <?= htmlspecialchars($event['nom']); ?></p>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
 <!-- Titre principal -->
 <h1 class="text-center mb-4">Nos points de collecte</h1>
 <!-- Texte -->
@@ -45,7 +76,7 @@ include_once "header.php";
 </p>
 <div class="row align-items-center">
   <!-- Colonne pour le texte (à gauche) -->
-  <div class="col-md-5 d-flex flex-column align-items-center">
+  <div class="col-12 col-md-5 d-flex flex-column align-items-center">
     <div class="text-left">
       <p>
         <strong>ROANNE</strong><br>
@@ -76,10 +107,11 @@ include_once "header.php";
   </div>
 
   <!-- Colonne pour la carte (à droite) -->
-  <div class="col-md-7">
+  <div class="col-12 col-md-7">
     <div id="map"></div>
   </div>
 </div>
+<hr>
 </div>
 
 <!-- Intégration de Leaflet JS -->
@@ -87,12 +119,13 @@ include_once "header.php";
 <script src="js/carte.js"></script>
 
 
+
 <!-- Membres du Bureau -->
 <div class="container my-5">
     <h2 class="text-center fw-bold">Les membres du bureau</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4">
         <!-- Première étiquette -->
-        <div class="col">
+        <div class="col-12">
             <div class="card member-card">
                 <img src="img/president.png" alt="M. MARQUIS Jean-François" class="member-image">
                 <div class="card-body">
@@ -102,7 +135,7 @@ include_once "header.php";
             </div>
         </div>
         <!-- Deuxième étiquette -->
-        <div class="col">
+        <div class="col-12">
             <div class="card member-card">
                 <img src="img/tresoriere.png" alt="Mme VIAL Brigitte" class="member-image">
                 <div class="card-body">
@@ -112,7 +145,7 @@ include_once "header.php";
             </div>
         </div>
         <!-- Troisième étiquette -->
-        <div class="col">
+        <div class="col-12">
             <div class="card member-card">
                 <img src="img/secretaire.png" alt="Mme MOREL Marie Claude" class="member-image">
                 <div class="card-body">

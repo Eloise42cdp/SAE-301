@@ -2,10 +2,10 @@
 include_once "header.php";
 ?>
 <!-- Contenu principal -->
-<main class="block container my-5">
+<main class="container my-5">
 <h1>Mentions légales</h1>
 <br>
-
+        <section class="block">
         <!-- Informations générales -->
         <section class="mb-5">
             <h2>Informations générales</h2>

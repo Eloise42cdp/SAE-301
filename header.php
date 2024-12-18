@@ -7,8 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/carrousel.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <!--<link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" type="text/css" href="css/contact.css">-->
 
@@ -31,14 +31,14 @@
     <div class="custom-header">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col-2">
+                <div class="col-6 col-sm-4 col-md-2">
                     <a href="index.php"><img src="img/logo.png" alt="Logo" class="header-logo"></a>
                 </div>
-                <div class="col-8 text-center">
+                <div class="col-6 col-sm-4 col-md-8 text-center">
                     <h1 class="header-title">BIENVENUE</h1>
                     <p class="header-subtitle">Amis de la Foire Aux Jouets</p>
                 </div>
-                <div class="col-2 text-right">
+                <div class="col-12 col-sm-4 col-md-2 text-center text-md-right">
                     <a href="connexion.php">
                         <button class="btn">
                             <span class="btn-text">CONNEXION</span>
