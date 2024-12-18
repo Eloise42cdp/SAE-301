@@ -7,11 +7,11 @@ include_once "header.php";
 <div class="container my-5">
     <div class="row equal-height">
         <!-- Section Image -->
-        <div class="col-md-6">
+        <div class="col-12 col-md-6">
             <img src="img/flyer.jpg" alt="Foire aux Jouets" class="img-fluid img-equal">
         </div>
         <!-- Section Texte -->
-        <div class="col-md-6 d-flex">
+        <div class="col-12 col-md-6 d-flex">
             <div class="d-flex flex-column justify-content-between">
                 <h2 class="fw-bold">Qui sommes nous ?</h2>
                 <p class="text-justify">
@@ -45,7 +45,7 @@ include_once "header.php";
 </p>
 <div class="row align-items-center">
   <!-- Colonne pour le texte (à gauche) -->
-  <div class="col-md-5 d-flex flex-column align-items-center">
+  <div class="col-12 col-md-5 d-flex flex-column align-items-center">
     <div class="text-left">
       <p>
         <strong>ROANNE</strong><br>
@@ -76,7 +76,7 @@ include_once "header.php";
   </div>
 
   <!-- Colonne pour la carte (à droite) -->
-  <div class="col-md-7">
+  <div class="col-12 col-md-7">
     <div id="map"></div>
   </div>
 </div>
@@ -90,9 +90,9 @@ include_once "header.php";
 <!-- Membres du Bureau -->
 <div class="container my-5">
     <h2 class="text-center fw-bold">Les membres du bureau</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4">
         <!-- Première étiquette -->
-        <div class="col">
+        <div class="col-12">
             <div class="card member-card">
                 <img src="img/president.png" alt="M. MARQUIS Jean-François" class="member-image">
                 <div class="card-body">
@@ -102,7 +102,7 @@ include_once "header.php";
             </div>
         </div>
         <!-- Deuxième étiquette -->
-        <div class="col">
+        <div class="col-12">
             <div class="card member-card">
                 <img src="img/tresoriere.png" alt="Mme VIAL Brigitte" class="member-image">
                 <div class="card-body">
@@ -112,7 +112,7 @@ include_once "header.php";
             </div>
         </div>
         <!-- Troisième étiquette -->
-        <div class="col">
+        <div class="col-12">
             <div class="card member-card">
                 <img src="img/secretaire.png" alt="Mme MOREL Marie Claude" class="member-image">
                 <div class="card-body">
