@@ -11,7 +11,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="../css/style.css">
     <?php
     include 'get_event.php';
     ?>
@@ -24,7 +24,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-2">
-                        <a href="Accueil.html"><img src="IMAGE/logo.png" alt="Logo" class="header-logo"></a>
+                        <a href="Accueil.html"><img src="../img/logo.png" alt="Logo" class="header-logo"></a>
                     </div>
                     <div class="col-8 text-center">
                         <h1 class="header-title">Espace Administrateur</h1>
@@ -45,7 +45,9 @@
         </div>
     </header>
 
+    <section class="block">
     <h2>Ajouter un événement</h2>
+    <div class="champs">
     <form method="POST" action="ajout_event.php">
         <label for="nom">Nom événement :</label><br>
         <input type="text" id="nom" name="nom" required><br><br>
@@ -59,13 +61,15 @@
         <label for="adresse">Lieu :</label><br>
         <input type="text" id="adresse" name="adresse" required><br><br>
     
-        <button type="submit">AJOUTER</button><br><br>
+        <button class="btnB" type="submit">AJOUTER</button><br><br>
     </form>
-
+    </div>
+    </section>
    
-
+    <section class="block">
     <!-- Formulaire de modification -->
     <h2>Modifier un événement</h2>
+    <div class="champs">
     <form method="POST" action="modifier_event.php">
         <label for="evenement">Sélectionner un événement :</label><br>
         <select name="id_evenement" id="evenement" required>
@@ -81,11 +85,15 @@
         <input type="datetime-local" id="date_de_fin" name="dateFin" required><br><br>
         <label for="adresse">Lieu :</label><br>
         <input type="text" id="adresse" name="adresse" required><br><br>
-        <button type="submit">MODIFIER</button><br><br>
+        <button class="btnB" type="submit">MODIFIER</button><br><br>
     </form>
+    </div>
+    </section>
 
+    <section class="block">
     <!-- Formulaire de suppression -->
     <h2>Supprimer un événement</h2>
+    <div class="champs">
     <form method="POST" action="supprimer_event.php">
         <label for="nom">Nom de l'événement :</label><br>
         <select name="nom" id="nom" required>
@@ -93,19 +101,17 @@
                 <option value="<?= htmlspecialchars($evenement['nom']); ?>"><?= htmlspecialchars($evenement['nom']); ?></option>
             <?php endforeach; ?>
         </select><br><br>
-        <button type="submit">SUPPRIMER</button><br><br>
+        <button class="btnB" type="submit">SUPPRIMER</button><br><br>
     </form>
-
-
-    
-
+    </div>
+    </section>           
 
     <footer>
         <div class="custom-footer">
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-2">
-                        <img src="IMAGE/logo.png" alt="Logo" class="footer-logo">
+                        <img src="../img/logo.png" alt="Logo" class="footer-logo">
                     </div>
                     <div class="col-8 text-center">
                         <p class="footer-title">Amis de la Foire Aux Jouets</p>
@@ -116,12 +122,12 @@
                             <button class="btn">
                                 <span class="btn-text">CONTACT</span>
                                 <span class="btn-icon">
-                                    <img src="IMAGE/user.png" alt="Contact" class="btn-img">
+                                    <img src="../img/user.png" alt="Contact" class="btn-img">
                                 </span>
                             </button>
                         </a>
                         <a href="#" class="social-link">
-                            <img src="IMAGE/facebook.png" alt="Facebook" class="social-icon">
+                            <img src="../img/facebook.png" alt="Facebook" class="social-icon">
                         </a>
                     </div>
                 </div>
