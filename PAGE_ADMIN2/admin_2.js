@@ -1,3 +1,6 @@
+
+
+
 // Initialisation de la carte centrée sur une latitude et une longitude spécifiques
 let map = L.map('map').setView([46.1, 4.05], 9);
 
