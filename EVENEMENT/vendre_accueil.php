@@ -16,7 +16,7 @@ $evenements = $query->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <h1>Les Événements</h1>
     <?php foreach ($evenements as $event): ?>
-        <div class="evenement">
+        <div>
             
             <p><strong>Date :</strong> 
 
