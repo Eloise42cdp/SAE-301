@@ -1,3 +1,4 @@
+/*HEDEAR & FOOTER*/
 @import url("https://fonts.googleapis.com/css2?family=Oswald");
 @import url("https://fonts.googleapis.com/css2?family=Quicksand");
 
@@ -146,7 +147,6 @@ h1, h2, h3, h4 {
     height: 2em;
 }
 
-
 /* --- Éléments généraux --- */
 
 /* Media query pour écrans de 768px et moins */
@@ -166,4 +166,33 @@ h1, h2, h3, h4 {
     .btn-contact .contact-icon {
         display: block; /* Affiche uniquement l'icône */
     }
+}
+
+/*CONTACT*/
+.contact {
+    background-color: #a4c7e2; /* Fond bleu clair */
+    margin: 5%; /* Marges autour du bloc */
+    padding: 5%; /* Espacement interne */
+    border-radius: 3%; /* Coins légèrement arrondis (15px au lieu de 15%) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optionnel : légère ombre pour relief */
+}
+
+.facebook {
+    margin-top: 10%;
+    height: 5em;
+}
+
+.rs {
+    display: flex; /* Active l'alignement en ligne des éléments */
+    align-items: center; /* Aligne verticalement l'image et le texte */
+    gap: 10px; /* Espace entre l'image et le texte */
+}
+
+.rs img.facebook {
+    width: 40px; /* Ajustez la taille de l'image si nécessaire */
+    height: auto; /* Conserve les proportions de l'image */
+}
+
+.rs p {
+    margin-top: 0; /* Retire les marges par défaut autour du texte */
 }
