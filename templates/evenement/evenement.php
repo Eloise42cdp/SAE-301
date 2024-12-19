@@ -1,7 +1,7 @@
     <div id="btnDeconnexion">
         <a href="accueil_admin.php">
-            <button class="btn">
-                <span class="btn-text">Retour page Admin</span>
+            <button class="btnC">
+                <span class="btn-text">Retour page Administrateur</span>
                 <span class="btn-icon">
                     <img src="img/user.png" alt="Retour à la page admin" class="btn-img">
                 </span>
@@ -9,7 +9,9 @@
         </a>
     </div>
     <!-- Formulaire de modification -->
+    <section class="block">
     <h2>Ajouter un événement</h2>
+    <div class="champs">
     <form method="POST" action="admin_evenement.php">
         <label for="nom_evenement">Nom événement :</label><br>
         <input type="text" id="nom_evenement" name="nom_evenement" required><br><br>
@@ -36,16 +38,16 @@ foreach ($tab_JouerOption as $value) {
     echo "</label>";
 }
 ?>
-
-
         <input type="hidden" name="action" value="ajout_evenement">
-        <button type="submit">Ajouter</button>
+        <button class="btnB" type="submit">Ajouter</button>
     </form>
-
-
+</div>
+</section>
+<section class="block">
     <!-- Formulaire de modification -->
     <h2>Modifier un événement</h2>
     <div id="message"></div>
+    <div class="champs">
     <form id="form_modifier_event">
         <label for="evenement">Sélectionner un événement :</label><br>
         <select name="id_evenement" id="evenement" required>
@@ -78,10 +80,11 @@ foreach ($tab_JouerOption as $value) {
         <input type="hidden" name="action" value="modif_evenement">
         <input type="hidden" id="id_evenement" name="id_evenement" value="">
 
-        <button type="submit">MODIFIER</button><br><br>
+        <button class="btnB" type="submit">MODIFIER</button><br><br>
         
     </form>
-
+        </div>
+        </section>
     <script>
         // Sélection du <select> et du formulaire
         const selectEvent = document.getElementById('evenement');
@@ -157,10 +160,11 @@ foreach ($tab_JouerOption as $value) {
         });
    
     </script>
-
+    <section class="block">
     <!-- Formulaire pour supprimer -->
     <h2>Supprimer un événement</h2>
     <div id="message-sup"></div>
+    <div class="champs">
     <form id="form_sup_event">
         <label for="nom">Nom de l'événement :</label><br>
         <select name="evenement-sup" id="evenement-sup" required>
@@ -177,8 +181,10 @@ foreach ($tab_JouerOption as $value) {
             }
         ?>
         </select><br><br>
-        <button type="submit">SUPPRIMER</button><br><br>
+        <button class="btnB" type="submit">SUPPRIMER</button><br><br>
     </form>
+        </div>
+        </section>
     <script>
     // Sélection du <select> et du formulaire
     const selectEventSup = document.getElementById('evenement-sup');

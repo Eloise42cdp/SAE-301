@@ -21,10 +21,7 @@ h4 {
 .custom-header {
     background-color: #a4c7e2;
     padding: 2em 0;
-    border-bottom: 1px solid #ccc;
-    position: relative;
-    overflow: hidden;
-    clip-path: ellipse(100% 100% at 50% 0);
+    border-bottom: 2px solid #ccc;
 }
 /* Logo */
 .header-logo {
@@ -72,7 +69,7 @@ h4 {
     margin: 5px 0 0;
 }
 /* POUR NOS BOUTON */
-.btn {
+.btn, .btnC {
     background-color: #f4979c;
     color: rgb(251, 255, 195);
     border: none;
@@ -94,7 +91,7 @@ h4 {
     color: rgb(251, 255, 195);
 }
 /* Style au survol */
-.btn:hover {
+.btn:hover, .btnC:hover {
     background-color: rgb(251, 255, 195);
     color: rgb(194, 200, 255);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
@@ -113,7 +110,6 @@ h4 {
     width: 2em;
     height: 2em;
 }
-
 /*Page Accueil */
 /* Qui sommes nous ? */
 /* Style pour l'image dans la section "Qui sommes-nous ?" */
@@ -161,7 +157,6 @@ h2.fw-bold {
 #pFoire {
     font-size: 150%;
 }
-
 /* Les membres du bureau */
 /* Style général pour les étiquettes */
 .member-card {
@@ -234,7 +229,6 @@ h2.fw-bold {
     height: 2em;
     width: 2em;
 }
-
 /*Page Connexion*/
 .connexion {
     display: flex;
@@ -246,9 +240,7 @@ h2.fw-bold {
     padding: 5%;
     border-radius: 2%;
     box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
-    margin-top: 200px;
 }
-
 .col {
     flex: 1;
     padding: 2%;
@@ -519,4 +511,8 @@ h2.fw-bold {
     background-color: rgb(251, 255, 195);
     color: rgb(194, 200, 255);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+/*Bouton "retour page administrateur"*/
+.btnC {
+    margin-top: 5%;
 }

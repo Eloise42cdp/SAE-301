@@ -1,7 +1,7 @@
 <?php
 include_once "header.php";
 //if (!isset($_SESSION)) session_start();
-include_once "class/bdd.php";
+include_once "class/bddm.php";
 include_once "class/user.php";
 
 // Cree un mot de passe
