@@ -1,31 +1,37 @@
-<div id="btnDeconnexion">
-    <a href="accueil_admin.php">
-        <button class="btn">
-            <span class="btn-text">Retour page Admin</span>
-            <span class="btn-icon">
-                <img src="img/user.png" alt="Retour à la page admin" class="btn-img">
-            </span>
-        </button>
-    </a>
-</div>
-
 <?php
-    $query='SELECT nom, Id_JouerType FROM jouertype';
-    $stmt = $db->query($query);
-    $activites = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    foreach ($activites as $activite) {
-        echo "<br>".$activite['Id_JouerType'].". ".$activite['nom'];
-    }
+     $query='SELECT nom, Id_JouerType FROM jouertype';
+     $stmt = $db->query($query);
+     $activites = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
-
-<h2>Ajouter une activié :<h2>
-<div id="message-ajouter"></div>
-<form id="form_ajouter_activite">
-    <label for="nom">Nom de l'activité :</label><br>
-    <input type="text" id="nom" name="nom" required><br><br>
-    <button type="submit">Ajouter</button><br><br>
-</form>
+<div class="liste" style="margin-left: 10%">
+    <div id="btnDeconnexion">
+        <a href="accueil_admin.php">
+            <button class="btnC">
+                <span class="btn-text">Retour page Administrateur</span>
+                <span class="btn-icon">
+                    <img src="img/user.png" alt="Retour à la page admin" class="btn-img">
+                </span>
+            </button>
+        </a>
+    </div>
+    <?php
+        foreach ($activites as $activite) { ?>
+            <div class="listeActivite"><p><?php
+                echo "<br>".$activite['Id_JouerType'].". ".$activite['nom'];?></p>
+            </div>
+    <?php   }
+    ?>
+</div> 
+<section class="block">
+<h2>Ajouter une activité :<h2>
+<div class="champs"> 
+    <form>
+        <label for="nom">Nom de l'activité :</label>
+        <input class="champs" type="text" name="nom" required>
+        <button class="btnB" type="submit">Ajouter</button><br><br>
+    </form>
+</div>
+</section>
 
 <script>
     const formActivite = document.getElementById('form_ajouter_activite');
@@ -63,8 +69,9 @@
     });
 </script>
 
-<h2>Supprimer une activié :<h2>
-<div id="message-supprimer"></div>
+<section class="block">
+<h2>Supprimer une activité :<h2>
+<div class="champs">
 <form id="form_supprimer_activite">
     <label for="membre">Sélectionner une activité :</label><br>
     <select name="activite-sup" id="activite-sup" required>
@@ -82,8 +89,11 @@
         }
     ?>
     </select>
-    <button type="submit">Supprimer</button><br><br>
+    <button class="btnB" type="submit">Supprimer</button><br><br>
 </form>
+    </div>
+    </section>
+
 <script>
     // Sélection du <select> et du formulaire
     const selectActiviteSup = document.getElementById('activite-sup');
