@@ -1,3 +1,13 @@
+    <div id="btnDeconnexion">
+        <a href="accueil_admin.php">
+            <button class="btn">
+                <span class="btn-text">Retour page Admin</span>
+                <span class="btn-icon">
+                    <img src="img/user.png" alt="Retour à la page admin" class="btn-img">
+                </span>
+            </button>
+        </a>
+    </div>
     <!-- Formulaire de modification -->
     <h2>Ajouter un événement</h2>
     <form method="POST" action="admin_evenement.php">
@@ -73,34 +83,65 @@ foreach ($tab_JouerOption as $value) {
     </form>
 
     <script>
-    // Sélection du <select> et du formulaire
-    const selectEvent = document.getElementById('evenement');
-    const form = document.getElementById('form_modifier_event');
+        // Sélection du <select> et du formulaire
+        const selectEvent = document.getElementById('evenement');
+        const form = document.getElementById('form_modifier_event');
 
-    const inputId       = document.getElementById('id_evenement');
-    const inputNom      = document.getElementById('nom');
-    const inputDateDeb  = document.getElementById('dateDebut');
-    const inputDateFin  = document.getElementById('dateFin');
-    const inputAdresse  = document.getElementById('adresse');
+        const inputId       = document.getElementById('id_evenement');
+        const inputNom      = document.getElementById('nom');
+        const inputDateDeb  = document.getElementById('dateDebut');
+        const inputDateFin  = document.getElementById('dateFin');
+        const inputAdresse  = document.getElementById('adresse');
 
-    const messageDiv    = document.getElementById('message');
+        const messageDiv    = document.getElementById('message');
 
-    // Quand on change l'événement sélectionné, on récupère ses infos via AJAX
-    selectEvent.addEventListener('change', function() {
-        const id = this.value;
-        if (!id) return;
+        // Quand on change l'événement sélectionné, on récupère ses infos via AJAX
+        selectEvent.addEventListener('change', function() {
+            const id = this.value;
+            if (!id) return;
 
-        // Faire un appel AJAX (fetch) vers le script PHP pour récupérer les infos de l’événement
-        fetch('ajax/modif_evenement.php?action=get_event&id=' + id)
+            // Faire un appel AJAX (fetch) vers le script PHP pour récupérer les infos de l’événement
+            fetch('ajax/modif_evenement.php?action=get_event&id=' + id)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Remplir les champs du formulaire avec les données récupérées
+                        inputId.value      = data.evenement.id_Evenement;
+                        inputNom.value     = data.evenement.nom;
+                        inputDateDeb.value = data.evenement.DateDebut.replace(' ', 'T');
+                        inputDateFin.value = data.evenement.DateFin.replace(' ', 'T');
+                        inputAdresse.value = data.evenement.Adresse;
+                    } else {
+                        messageDiv.innerHTML = '<p style="color:red;">Erreur: ' + data.message + '</p>';
+                    }
+                    // Faire disparaître le message au bout de 3 secondes
+                    setTimeout(() => {
+                        messageDiv.innerHTML = '';
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error(error);
+                    messageDiv.innerHTML = '<p style="color:red;">Erreur AJAX: ' + error + '</p>';
+                });
+        });
+
+        // À la soumission du formulaire, on envoie l'update via AJAX
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // empêcher la soumission classique
+
+            // Récupérer les données du formulaire
+            const formData = new FormData(form);
+            formData.append('action', 'update_event'); // Indique l'action côté PHP
+
+            // Appel AJAX (POST) pour mettre à jour l’événement
+            fetch('ajax/modif_evenement.php', {
+                method: 'POST',
+                body: formData
+            })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Remplir les champs du formulaire avec les données récupérées
-                    inputId.value      = data.evenement.id_Evenement;
-                    inputNom.value     = data.evenement.nom;
-                    inputDateDeb.value = data.evenement.DateDebut.replace(' ', 'T');
-                    inputDateFin.value = data.evenement.DateFin.replace(' ', 'T');
-                    inputAdresse.value = data.evenement.Adresse;
+                    messageDiv.innerHTML = '<p style="color:green;">Événement mis à jour avec succès!</p>';
                 } else {
                     messageDiv.innerHTML = '<p style="color:red;">Erreur: ' + data.message + '</p>';
                 }
@@ -113,38 +154,7 @@ foreach ($tab_JouerOption as $value) {
                 console.error(error);
                 messageDiv.innerHTML = '<p style="color:red;">Erreur AJAX: ' + error + '</p>';
             });
-    });
-
-    // À la soumission du formulaire, on envoie l'update via AJAX
-    form.addEventListener('submit', function(e) {
-        e.preventDefault(); // empêcher la soumission classique
-
-        // Récupérer les données du formulaire
-        const formData = new FormData(form);
-        formData.append('action', 'update_event'); // Indique l'action côté PHP
-
-        // Appel AJAX (POST) pour mettre à jour l’événement
-        fetch('ajax/modif_evenement.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                messageDiv.innerHTML = '<p style="color:green;">Événement mis à jour avec succès!</p>';
-            } else {
-                messageDiv.innerHTML = '<p style="color:red;">Erreur: ' + data.message + '</p>';
-            }
-            // Faire disparaître le message au bout de 3 secondes
-            setTimeout(() => {
-                messageDiv.innerHTML = '';
-            }, 3000);
-        })
-        .catch(error => {
-            console.error(error);
-            messageDiv.innerHTML = '<p style="color:red;">Erreur AJAX: ' + error + '</p>';
         });
-    });
    
     </script>
 

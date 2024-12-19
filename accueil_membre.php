@@ -1,5 +1,5 @@
 <?php
-include "header_membre.php";
+include_once "header_membre.php";
 include_once "class/bdd.php";
 include_once "class/user.php";
 //$db = (new Database())->getConnection();
@@ -15,61 +15,20 @@ if (!$user->isLoggedIn() || $user->role != "membre") {
     exit;
 }
 
-echo "<br>Espace Membre:" . $user->role;
+echo "<br>Bonjour ".$user->GetNameMembre()." !";
 ?>
 <!-- Titre principal -->
 <h1 class="text-center mb-4">Nos points de collecte</h1>
 <!-- Texte -->
 <p class="text-center mb-4">
-  <strong>Où récupérer les jouets ?<br>Sur cette carte vous pourrez retrouver tous nos points de collecte.</strong>
+    <strong>
+        Où récupérer les jouets ?
+    </strong>
 </p>
-<div class="row align-items-center">
-  <!-- Colonne pour le texte (à gauche) -->
-  <div class="col-md-5 d-flex flex-column align-items-center">
-    <div class="text-left">
-      <p>
-        <strong>ROANNE</strong><br>
-        <img class="iconeMap" src="img/epingle-2.png">
-        Club Suzanne Lacore - 29 rue Bravard<br>
-        <img class="iconeMap" src="img/epingle-5.png">
-        Club Jean Puy - 5 rue Jean Puy<br>
-        <img class="iconeMap" src="img/epingle-6.png">
-        Centre social La Livatte - 97 rue A. Thomas<br><br>
-
-        <strong>RIORGES</strong><br>
-        <img class="iconeMap" src="img/epingle-7.png">
-        Centre social - 1 place Jean Cocteau<br><br>
-
-        <strong>LE COTEAU</strong><br>
-        <img class="iconeMap" src="img/epingle-4.png">
-        Centre social - 3 rue Auguste Gelin<br><br>
-
-        <strong>CHARLIEU</strong><br>
-        <img class="iconeMap" src="img/epingle-8.png">
-        M.J.C. - 1 rue du Pont de Pierre<br><br>
-
-        <strong>SAINT JULIEN DE JONZY</strong><br>
-        <img class="iconeMap" src="img/epingle.png">
-        Decheterie - Lieu dit La Thuillere
-      </p>
-    </div>
-  </div>
-
-  <!-- Colonne pour la carte (à droite) -->
-  <div class="col-md-7">
-    <div id="map"></div>
-  </div>
-</div>
-</div>
-
-<!-- Intégration de Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script src="js/carte.js"></script>
 <br>
-
-<h1 class="text-center mb-4">Informations relatives aux choix de votre profil</h1>
-<section class="block">
+Informations relatives aux choix de votre profil
 <?php
+
 $query = "SELECT 
     E.Id_Evenement,
     E.adresse,
@@ -81,15 +40,15 @@ $query = "SELECT
     M.nom AS NomMembre,
     M.prenom
     FROM 
-        Evenement E
+        evenement E
     JOIN 
-        EvenementType ET ON E.Id_Evenement = ET.Id_Evenement
+        evenementtype ET ON E.Id_Evenement = ET.Id_Evenement
     JOIN 
-        JouerType JT ON ET.Id_JouerType = JT.Id_JouerType
+        jouertype JT ON ET.Id_JouerType = JT.Id_JouerType
     JOIN 
-        MembreDroit MD ON JT.Id_JouerType = MD.Id_JouerType
+        membredroit MD ON JT.Id_JouerType = MD.Id_JouerType
     JOIN 
-        Membre M ON MD.Id_Membre = M.Id_Membre
+        membre M ON MD.Id_Membre = M.Id_Membre
     WHERE 
         M.Id_Membre = :id_membre"; //[ID_DU_MEMBRE] "; //AND JT.Id_JouerType = [ID_JOUERTYPE];";
 
@@ -138,7 +97,7 @@ $stmt->execute();
 // Récupérer les données
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     echo "<h1>" . $row['NomJouerType'] . "</h1>";
-    echo "<br><p><strong>Horaires :</strong></p>";
+    echo "Horaire:";
 
     //echo "<br>debut".$row['dateDebut'];
     //echo "<br>fin".$row['dateFin'];
@@ -152,9 +111,10 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $jourFinFR = translateDayToFrench($jourFin);
     $heureFin = $dateFin->format('H\hi'); // Heures et minutes
 
-    echo "<p>Début : {$jourDebutFR} - {$heureDebut}</p>";
-    echo "<p>Fin : {$jourFinFR} - {$heureFin}</p>";
-    echo "<br><p><strong>Adresse:</strong></p>";
+    echo "Début : {$jourDebutFR} - {$heureDebut}<br>";
+    echo "Fin : {$jourFinFR} - {$heureFin}</p>";
+
+    echo "Adresse:";
     echo "<p>" . $row['adresse'] . "</p>";
 }
 
@@ -173,8 +133,9 @@ function translateDayToFrench($day)
     ];
     return $days[$day] ?? $day;
 }
+
 ?>
-</section>
+
 <?php
 include_once "footer.php";
 ?>

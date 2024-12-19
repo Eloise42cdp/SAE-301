@@ -106,3 +106,96 @@ elseif ($action === 'update_event') {
 
 
 ?>
+
+
+
+
+
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const selectEvent = document.getElementById('evenement');
+        const form = document.getElementById('form_modifier_event');
+
+        const inputId       = document.getElementById('id_evenement');
+        const inputNom      = document.getElementById('nom');
+        const inputDateDeb  = document.getElementById('dateDebut');
+        const inputDateFin  = document.getElementById('dateFin');
+        const inputAdresse  = document.getElementById('adresse');
+        const messageDiv    = document.getElementById('message');
+
+        // Appel AJAX pour charger les infos
+        selectEvent.addEventListener('change', function() {
+            fetch(`../ajax/modif_evenement.php?action=get_event&id=${this.value}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        inputId.value      = data.evenement.id_Evenement;
+                        inputNom.value     = data.evenement.nom;
+                        inputDateDeb.value = data.evenement.DateDebut.replace(' ', 'T');
+                        inputDateFin.value = data.evenement.DateFin.replace(' ', 'T');
+                        inputAdresse.value = data.evenement.Adresse;
+                    } else {
+                        messageDiv.innerHTML = '<p style="color:red;">' + data.message + '</p>';
+                    }
+                });
+        });
+
+        // Appel AJAX pour modifier
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            formData.append('action', 'update_event');
+
+            fetch('../ajax/modif_evenement.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    messageDiv.innerHTML = '<p style="color:green;">Événement modifié !</p>';
+                } else {
+                    messageDiv.innerHTML = '<p style="color:red;">' + data.message + '</p>';
+                }
+            });
+        });
+    });
+</script>
+
+<body>
+<h2>Modifier un événement</h2>
+<div id="message"></div>
+<form id="form_modifier_event">
+    <label for="evenement">Sélectionner un événement :</label><br>
+    <select id="evenement" name="id_evenement">
+        <option value="">-- Choisir un événement --</option>
+        <?php
+        include '../class/bdd.php'; // Connexion
+        $stmt = $pdo->query("SELECT id_Evenement, nom FROM evenement");
+        foreach ($stmt->fetchAll() as $event) {
+            echo '<option value="'.$event['id_Evenement'].'">'.$event['nom'].'</option>';
+        }
+        ?>
+    </select><br><br>
+
+    <label for="nom">Nom événement :</label><br>
+    <input type="text" id="nom" name="nom"><br><br>
+
+    <label for="dateDebut">Date début :</label><br>
+    <input type="datetime-local" id="dateDebut" name="dateDebut"><br><br>
+
+    <label for="dateFin">Date fin :</label><br>
+    <input type="datetime-local" id="dateFin" name="dateFin"><br><br>
+
+    <label for="adresse">Lieu :</label><br>
+    <input type="text" id="adresse" name="adresse"><br><br>
+
+    <input type="hidden" id="id_evenement" name="id_evenement">
+    <button type="submit">Modifier</button>
+</form>
+
