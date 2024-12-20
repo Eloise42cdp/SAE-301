@@ -21,7 +21,10 @@ h4 {
 .custom-header {
     background-color: #a4c7e2;
     padding: 2em 0;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    overflow: hidden;
+    clip-path: ellipse(100% 100% at 50% 0);
 }
 /* Logo */
 .header-logo {
@@ -47,6 +50,13 @@ h4 {
     color: white;
     margin: 0;
 }
+
+#headermembre {
+    position: fixed;
+    width: 100%;
+    z-index: 1500;
+}
+
 /* --- FOOTER --- */
 /* --- Footer Styles --- */
 .custom-footer {
@@ -69,7 +79,7 @@ h4 {
     margin: 5px 0 0;
 }
 /* POUR NOS BOUTON */
-.btn, .btnC {
+.btn, .btnC, .btnD {
     background-color: #f4979c;
     color: rgb(251, 255, 195);
     border: none;
@@ -91,7 +101,7 @@ h4 {
     color: rgb(251, 255, 195);
 }
 /* Style au survol */
-.btn:hover, .btnC:hover {
+.btn:hover, .btnD:hover {
     background-color: rgb(251, 255, 195);
     color: rgb(194, 200, 255);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
@@ -110,6 +120,7 @@ h4 {
     width: 2em;
     height: 2em;
 }
+
 /*Page Accueil */
 /* Qui sommes nous ? */
 /* Style pour l'image dans la section "Qui sommes-nous ?" */
@@ -157,6 +168,7 @@ h2.fw-bold {
 #pFoire {
     font-size: 150%;
 }
+
 /* Les membres du bureau */
 /* Style général pour les étiquettes */
 .member-card {
@@ -229,6 +241,7 @@ h2.fw-bold {
     height: 2em;
     width: 2em;
 }
+
 /*Page Connexion*/
 .connexion {
     display: flex;
@@ -240,7 +253,9 @@ h2.fw-bold {
     padding: 5%;
     border-radius: 2%;
     box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
+    margin-top: 220px;
 }
+
 .col {
     flex: 1;
     padding: 2%;
@@ -307,6 +322,7 @@ h2.fw-bold {
     padding: 5%;
     border-radius: 3%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 220px;
 }
 .facebook {
     margin-top: 10%;
@@ -332,51 +348,68 @@ h2.fw-bold {
 .titreA {
     margin-bottom: 2em;
 }
-/*Boutons accueil admin*/
-.btnA {
-    justify-items: center;
-    /* Centrer les boutons dans leur colonne */
-    align-items: center;
-    /* Centrer les lignes */
-    margin-top: 2em;
-    padding: 2em;
-    font-size: 1.2em;
+/*PAGE AJOUT MODIF SUPP ADMIN*/
+.block {
+    background-color: #a4c7e2;
+    padding: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
 }
-.btnA1,
-.btnA2,
-.btnA3,
-.btnA4 {
+.champs {
+    margin-top: 1.5em;
+}
+.champs form {
+    display: grid;
+    flex-direction: column;
+    gap: 1em;
+}
+.champs input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8em;
+    border: 0.1em solid #ccc;
+    border-radius: 0.3em;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.champs select {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.8em;
+    border: 0.1em solid #ccc;
+    border-radius: 0.3em;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+.btnB {
     background-color: #f4979c;
     color: rgb(251, 255, 195);
     border: none;
-    padding: 1em;
-    /* Taille intérieure adaptée */
-    border-radius: 1em;
-    /* Coins arrondis */
+    padding: 10px 20px;
+    border-radius: 10vh;
     font-weight: bold;
-    box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1em;
-    width: 40em;
-    /* Largeur relative au conteneur */
-    height: 15em;
-    /* Laisser la hauteur s'ajuster */
-    aspect-ratio: 1 / 1;
-    /* Hauteur égale à la largeur */
-    text-align: center;
-    /* Centrer le texte */
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    gap: 5px;
+    font-size: 16px;
     transition: all 0.3s ease;
+    max-width: 10em;
 }
-/* Hover */
-.btnA1:hover,
-.btnA2:hover,
-.btnA3:hover,
-.btnA4:hover {
+/* Style au survol */
+.btnB:hover {
     background-color: rgb(251, 255, 195);
     color: rgb(194, 200, 255);
-    box-shadow: 0.4em 0.4em 0.8em rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+/*PAGE ACCUEIL ADMIN*/
+.containerA {
+    margin: 6em;
+    margin-bottom: 2em;
+}
+.titreA {
+    margin-bottom: 2em;
 }
 /* --- Éléments généraux --- */
 /* Media query pour écrans de 768px et moins */
@@ -400,13 +433,6 @@ h2.fw-bold {
     .btnA {
         grid-template-columns: 1fr;
         /* Une seule colonne */
-    }
-    .btnA1,
-    .btnA2,
-    .btnA3,
-    .btnA4 {
-        width: 70%;
-        /* Largeur plus grande pour s'adapter aux écrans étroits */
     }
     .connexion {
         flex-direction: column;
@@ -447,72 +473,75 @@ h2.fw-bold {
     .social-link {
         margin-top: 1em;
     }
-}
-@media screen and (max-width: 780px) {
-
-    .btnA1,
-    .btnA2,
-    .btnA3,
-    .btnA4 {
-        width: 70%;
-        /* Largeur plus grande pour s'adapter aux écrans étroits */
+    .btn-icon img {
+        width: 24px; /* Taille de l'icône légèrement augmentée */
+        height: 24px;
     }
 }
-/*PAGE AJOUT MODIF SUPP ADMIN*/
-.block {
-    background-color: #a4c7e2;
-    padding: 5%;
+/*PAGE ACCEUIL MEMBRE*/
+.carte {
+    padding-top: 5em;
+}
+.btnD {
+    margin-left: 5%;
     margin-top: 5%;
-    margin-bottom: 5%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 1em;
 }
-.champs {
-    margin-top: 1.5em;
+@media screen and (max-width: 780px) { 
+    .btn {
+    width: 40px;  
+    height: 40px;  
+    padding: 0;
+    border-radius: 50%; /* Bouton rond */ 
+    justify-content: center;
+    margin-right: 2vh;
+    }
+    .btn-text {  
+    display: none; /* Cache le texte du bouton */
+    } 
+    .btn-icon {
+    display: inline-block; /* Affiche uniquement l'icône */
+    } 
 }
-.champs form {
-    display: grid;
-    flex-direction: column;
-    gap: 1em;
+
+/* Conteneur des cases à cocher */
+.checkbox label {
+    display: flex;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #333;
 }
-.champs input {
-    width: 100%;
-    max-width: 400px;
-    padding: 0.8em;
-    border: 0.1em solid #ccc;
-    border-radius: 0.3em;
-    font-size: 1em;
-    box-sizing: border-box;
-}
-.champs select {
-    width: 100%;
-    max-width: 400px;
-    padding: 0.8em;
-    border: 0.1em solid #ccc;
-    border-radius: 0.3em;
-    font-size: 1em;
-    box-sizing: border-box;
-}
-.btnB {
-    background-color: #f4979c;
-    color: rgb(251, 255, 195);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10vh;
-    font-weight: bold;
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-    gap: 5px;
-    font-size: 16px;
+
+/* Style des cases à cocher */
+.checkbox input[type="checkbox"],
+form input[type="checkbox"] {
+    appearance: none; /* Supprime le style natif */
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid #000000; 
+    border-radius: 3px; 
+    background-color: white;
     transition: all 0.3s ease;
-    max-width: 10em;
+    cursor: pointer;
 }
-/* Style au survol */
-.btnB:hover {
-    background-color: rgb(251, 255, 195);
-    color: rgb(194, 200, 255);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
+/* Effet au survol */
+.checkbox input[type="checkbox"]:hover,
+form input[type="checkbox"]:hover {
+    border-color: #000000; 
 }
-/*Bouton "retour page administrateur"*/
-.btnC {
-    margin-top: 5%;
+
+/* Case cochée */
+.checkbox input[type="checkbox"]:checked,
+form input[type="checkbox"]:checked {
+    background-color: #374754; 
+    border-color: #000000;
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath fill="white" d="M20.292 5.292l-10.586 10.586-4.293-4.293-1.414 1.414 5.707 5.707 12-12z"/%3E');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
 }
+

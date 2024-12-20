@@ -1,38 +1,38 @@
 <div class="liste" style="margin-left: 10%">
-<div id="btnDeconnexion">
-    <a href="accueil_admin.php">
-        <button class="btnC">
-            <span class="btn-text">Retour page Administrateur</span>
-            <span class="btn-icon">
-                <img src="img/user.png" alt="Retour à la page admin" class="btn-img">
-            </span>
-        </button>
-    </a>
-</div>
+    <div id="btnDeconnexion">
+        <a href="accueil_admin.php">
+            <button class="btnC">
+                <span class="btn-text">Retour page Administrateur</span>
+                <span class="btn-icon">
+                    <img src="img/user.png" alt="Retour à la page admin" class="btn-img">
+                </span>
+            </button>
+        </a>
+    </div>
 </div>
 
 <section class="block">
     <h2>Supprimer le profil d’un membre :<h2>
     <div class="champs">
-    <form id="form_sup_membre">
-        <label for="membre">Sélectionner un membre :</label><br>
-        <select name="membre-sup" id="membre-sup" required>
-            <option value="" disabled selected>-- Sélectionnez --</option>
-            <?php
-                $db = new Database();
-                $bdd=$db->getConnection();
-                // Récupérer la liste des membres
-                $sql = "SELECT Id_Membre, nom, prenom FROM membre";
-                $stmt = $bdd->query($sql);
-                //$stmt->execute();
-                $membres = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                foreach ($membres as $membre) {
-                    echo'<option value="'.$membre['Id_Membre'].'">'.$membre['nom'].' '.$membre['prenom'].'</option>';
-                }
-            ?>
-        </select>
-        <button class="btnB" type="submit">Supprimer</button><br><br>
-    </form>
+        <form id="form_sup_membre">
+            <label for="membre">Sélectionner un membre :</label><br>
+            <select name="membre-sup" id="membre-sup" required>
+                <option value="" disabled selected>-- Sélectionnez --</option>
+                <?php
+                    $db = new Database();
+                    $bdd=$db->getConnection();
+                    // Récupérer la liste des membres
+                    $sql = "SELECT Id_Membre, nom, prenom FROM membre";
+                    $stmt = $bdd->query($sql);
+                    //$stmt->execute();
+                    $membres = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($membres as $membre) {
+                        echo'<option value="'.$membre['Id_Membre'].'">'.$membre['nom'].' '.$membre['prenom'].'</option>';
+                    }
+                ?>
+            </select>
+            <button class="btnB" type="submit">Supprimer</button><br><br>
+        </form>
         </div>
 </section>
 <script>

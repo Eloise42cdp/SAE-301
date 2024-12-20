@@ -31,12 +31,6 @@ if ($user->isAdmin()) {
 }
 exit;
 
-
-
-
-
-
-
 // on charge les informations du membre
 $user->GetInfoMembre();
 echo "<br>IdUser:".$user->IdUser;

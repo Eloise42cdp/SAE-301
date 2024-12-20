@@ -1,17 +1,17 @@
 <?php
 include_once "header.php";
+include_once "carrousel.php";
 ?>
-<?php include "carrousel.php";?>
 
 <!-- Qui sommes nous ? -->
 <div class="container my-5">
     <div class="row equal-height">
         <!-- Section Image -->
-        <div class="col-12 col-md-6">
+        <div class="col-md-6">
             <img src="img/flyer.jpg" alt="Foire aux Jouets" class="img-fluid img-equal">
         </div>
         <!-- Section Texte -->
-        <div class="col-12 col-md-6 d-flex">
+        <div class="col-md-6 d-flex">
             <div class="d-flex flex-column justify-content-between">
                 <h2 class="fw-bold">Qui sommes nous ?</h2>
                 <p class="text-justify">
@@ -33,85 +33,91 @@ include_once "header.php";
         <h3 class="fw-bold">Notre OBJECTIF, soutenir des actions humanitaires en direction des enfants du monde</h3>
     </div>
 </div>
-<div class="container my-5">
 
-<?php
-include 'PAGE_PROFIL/config.php';
+<!-- Evenement -->
+        <?php
+        include_once "class/bdd.php";
+        $db = (new Database())->getConnection();
 
-// Récupérer les événements depuis la BDD
-$query = $pdo->query("SELECT * FROM evenement ORDER BY dateDebut ASC");
-$evenements = $query->fetchAll(PDO::FETCH_ASSOC);
-?>
-<div class="block">
-    <div class="titreFoire">
-        <h1>Événement</h1><br>
-    </div>
-    <?php foreach ($evenements as $event): ?>
-        <div class="col">
-            <div class="event-details">
-                <div class="event-date">
-                    <h2><strong>Date :</strong></h2>
-                    <p id="pFoire"><?= date("d/m/Y H:i", strtotime($event['dateDebut'])); ?> au 
-                    <?= date("d/m/Y H:i", strtotime($event['dateFin'])); ?></p><br>
-                </div>
-                
-                <div class="event-foire">
-                    <h2><strong>Prochaine Foire aux Jouets 2025</strong></h2><br>
-                    <p id="pFoire"><strong>Lieu :</strong> <?= htmlspecialchars($event['adresse']); ?></p>
-                    <p id="pFoire"><strong>Nom :</strong> <?= htmlspecialchars($event['nom']); ?></p>
-                </div>
+        // Récupérer les événements depuis la BDD
+        $query = 'SELECT * FROM evenement ORDER BY dateDebut ASC LIMIT 1';
+        $stmt = $db->query($query);
+        $evenements = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+
+        <div class="block">
+            <div class="titreFoire">
+                <h1>Événements</h1>
             </div>
+            <?php foreach ($evenements as $event): ?>
+                <div class="col">
+                    <div class="event-details">
+                        <div class="event-date">
+                            <h2><strong>Date :</strong></h2>
+                            <p id="pFoire"><?= date("d/m/Y H:i", strtotime($event['dateDebut'])); ?> au
+                                <?= date("d/m/Y H:i", strtotime($event['dateFin'])); ?>
+                            </p><br>
+                        </div>
+
+                        <div class="event-foire">
+                            <h2><strong>Prochaine Foire aux Jouets 2025</h2></strong>
+                            <p id="pFoire"><strong>Lieux :</strong> <?= htmlspecialchars($event['adresse']); ?></p>
+                        </div>
+                    </div>
+                </div>
         </div>
     <?php endforeach; ?>
-</div>
+ 
 
+<!-- Point de colecte -->
+<div class="container my-5">
 
-<!-- Titre principal -->
-<h1 class="text-center mb-4">Nos points de collecte</h1>
-<!-- Texte -->
-<p class="text-center mb-4">
-  <strong>Où déposer vos jouets ?<br>
-    Sur cette carte vous pourrez retrouver tous nos points de collecte.
-  </strong>
-</p>
-<div class="row align-items-center">
-  <!-- Colonne pour le texte (à gauche) -->
-  <div class="col-12 col-md-5 d-flex flex-column align-items-center">
-    <div class="text-left">
-      <p>
-        <strong>ROANNE</strong><br>
-        <img class="iconeMap" src="img/epingle-2.png">
-        Club Suzanne Lacore - 29 rue Bravard<br>
-        <img class="iconeMap" src="img/epingle-5.png">
-        Club Jean Puy - 5 rue Jean Puy<br>
-        <img class="iconeMap" src="img/epingle-6.png">
-        Centre social La Livatte - 97 rue A. Thomas<br><br>
+    <!-- Titre principal -->
+    <h1 class="text-center mb-4">Nos points de collecte</h1>
+    <!-- Texte -->
+    <p class="text-center mb-4">
+        <strong>Où déposer vos jouets ?<br>
+            Sur cette carte vous pourrez retrouver tous nos points de collecte.
+        </strong>
+    </p>
+    <div class="row align-items-center">
+        <!-- Colonne pour le texte (à gauche) -->
+        <div class="col-12 col-md-5 d-flex flex-column align-items-center">
+            <div class="text-left">
+                <p>
+                    <strong>ROANNE</strong><br>
+                    <img class="iconeMap" src="img/epingle-2.png">
+                    Club Suzanne Lacore - 29 rue Bravard<br>
+                    <img class="iconeMap" src="img/epingle-5.png">
+                    Club Jean Puy - 5 rue Jean Puy<br>
+                    <img class="iconeMap" src="img/epingle-6.png">
+                    Centre social La Livatte - 97 rue A. Thomas<br><br>
 
-        <strong>RIORGES</strong><br>
-        <img class="iconeMap" src="img/epingle-7.png">
-        Centre social - 1 place Jean Cocteau<br><br>
+                    <strong>RIORGES</strong><br>
+                    <img class="iconeMap" src="img/epingle-7.png">
+                    Centre social - 1 place Jean Cocteau<br><br>
 
-        <strong>LE COTEAU</strong><br>
-        <img class="iconeMap" src="img/epingle-4.png">
-        Centre social - 3 rue Auguste Gelin<br><br>
+                    <strong>LE COTEAU</strong><br>
+                    <img class="iconeMap" src="img/epingle-4.png">
+                    Centre social - 3 rue Auguste Gelin<br><br>
 
-        <strong>CHARLIEU</strong><br>
-        <img class="iconeMap" src="img/epingle-8.png">
-        M.J.C. - 1 rue du Pont de Pierre<br><br>
+                    <strong>CHARLIEU</strong><br>
+                    <img class="iconeMap" src="img/epingle-8.png">
+                    M.J.C. - 1 rue du Pont de Pierre<br><br>
 
-        <strong>SAINT JULIEN DE JONZY</strong><br>
-        <img class="iconeMap" src="img/epingle.png">
-        Decheterie - Lieu dit La Thuillere
-      </p>
+                    <strong>SAINT JULIEN DE JONZY</strong><br>
+                    <img class="iconeMap" src="img/epingle.png">
+                    Decheterie - Lieu dit La Thuillere
+                </p>
+            </div>
+        </div>
+
+        <!-- Colonne pour la carte (à droite) -->
+        <div class="col-12 col-md-7">
+            <div id="map"></div>
+        </div>
     </div>
-  </div>
-
-  <!-- Colonne pour la carte (à droite) -->
-  <div class="col-12 col-md-7">
-    <div id="map"></div>
-  </div>
-</div>
-<hr>
+    <hr>
 </div>
 
 <!-- Intégration de Leaflet JS -->
@@ -156,6 +162,7 @@ $evenements = $query->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
+<script src="js/carte.js"></script>
 
 <?php
 include_once "footer.php";

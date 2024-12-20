@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page - Accueil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/carrousel.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <!--<link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" type="text/css" href="css/contact.css">-->
-
+    <link rel="stylesheet" href="css/carte.css">
+    <link rel="stylesheet" href="css/carrousel.css">
     <!-- Login et Creation de compte -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src= "js/creercompte.js"></script>
+    <script src="js/creercompte.js"></script>
+    <!-- Intégration de Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
-    
     <style>
         #extra-fields {
-           display: none;
+            display: none;
         }
     </style>
-
 </head>
+
 <body>
-<!-- Réalisation du Header -->
-<header>
-    <div class="custom-header">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-6 col-sm-4 col-md-2">
-                    <a href="index.php"><img src="img/logo.png" alt="Logo" class="header-logo"></a>
-                </div>
-                <div class="col-6 col-sm-4 col-md-8 text-center">
-                    <h1 class="header-title">BIENVENUE</h1>
-                    <p class="header-subtitle">Amis de la Foire Aux Jouets</p>
-                </div>
-                <div class="col-12 col-sm-4 col-md-2 text-center text-md-right">
-                    <a href="connexion.php">
-                        <button class="btn">
-                            <span class="btn-text">CONNEXION</span>
-                            <span class="btn-icon">
-                                <img src="img/user.png" alt="Connexion" class="btn-img">
-                            </span>
-                        </button>
-                    </a>
+    <!-- Réalisation du Header -->
+    <header>
+        <div class="custom-header">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-2">
+                        <a href="index.php"><img src="img/logo.png" alt="Logo" class="header-logo"></a>
+                    </div>
+                    <div class="col-8 text-center">
+                        <h1 class="header-title">BIENVENUE</h1>
+                        <p class="header-subtitle">Amis de la Foire Aux Jouets</p>
+                    </div>
+                    <div class="col-2 text-right">
+                        <a href="connexion.php">
+                            <button class="btn">
+                                <span class="btn-text">CONNEXION</span>
+                                <span class="btn-icon">
+                                    <img src="img/user.png" alt="Connexion" class="btn-img">
+                                </span>
+                            </button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>

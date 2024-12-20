@@ -83,6 +83,18 @@ class User {
         $this->IdUser = $_SESSION['user_id'];
         $this->TypeMembre = "admin";
     }
+
+    public function GetNameMembre() {
+        // Retour le nom et prenom du membre
+        $query = "SELECT nom, prenom FROM membre WHERE Id_membre = :id";
+
+        $stmt = $this->bdd->prepare($query);
+        $stmt->bindParam(':id', $this->IdUser);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $Name = $result['nom']." ". $result['prenom'];
+        return $Name;
+    }
 }
 
 
